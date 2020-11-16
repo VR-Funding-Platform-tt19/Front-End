@@ -1,5 +1,5 @@
 //----- Styles -------
-import './index.css';
+// import './index.css';
 
 //------ Imported Dependencies ---------
 import React from 'react';
@@ -9,7 +9,7 @@ import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import logger from 'redux-logger';
-import thunk from 'redux-thunk';
+import thunk from 'redux-thunk'
 
 // --------- Reducer Function -----------
 import { reducer } from './store/reducer'
