@@ -6,7 +6,7 @@ function App() {
 
 
 
-  
+  // Will need to add routing here
   return (
     <div className="App">
       <h1>VR Funding App</h1>
