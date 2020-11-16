@@ -1,6 +1,7 @@
 //  Still Needs:
 //      - POST API Hook Info Line 41
 //      - Route info Line 49
+//      - Add connect method 
 
 
 import React, { useState } from 'react'
@@ -43,6 +44,8 @@ const ProjectForm = () => {
             .post('{/* need api hook */', newProject)
                 .then((res) => {
                     console.log(res)
+                    // What does the post return 
+                    // props.setProjectData(res.data)
                 })
                 .catch((error)=> {
                     console.log(error)
@@ -53,6 +56,7 @@ const ProjectForm = () => {
 
     return (
         <div>
+            <h1> We are in ProjectForm</h1>
             <form onSubmit={onSubmit}>
                 <label>Project Name:</label>
                 <input

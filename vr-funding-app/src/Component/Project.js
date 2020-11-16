@@ -5,14 +5,16 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { axiosWithAuth } from '../Utils/axiosWithAuth'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 
 
 const Project = () => {
 
     const [projectData, setProjectData] = useState('')
     
-    const { id } = useHistory()
+    const { id } = useParams()
+
+    const history = useHistory()
 
     useEffect(() => {
         // axiosWithAuth()
@@ -20,6 +22,8 @@ const Project = () => {
             .get(`Need add get url with id of project ${id}`)
                 .then((res)=> {
                     setProjectData(res.data)
+                    // redirect user to ____________
+                    // history.push('')
                 })
                 .catch((error)=> {
                     console.log(error)
@@ -28,6 +32,7 @@ const Project = () => {
 
     return (
         <div>
+            <h1> We are in Project.js</h1>
             <h2>Project Name: {projectData.projectName}</h2>
             <h3>Project Author: {projectData.author}</h3>
             <h4>Project Funding Goal: {projectData.fundingGoal}</h4>
