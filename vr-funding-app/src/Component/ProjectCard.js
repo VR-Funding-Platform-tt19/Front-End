@@ -11,6 +11,7 @@ const ProjectCard = (props) => {
     
     return (
         <div>
+            <h1>We are in Project Card</h1>
             <div>
                 <h2>Project Name: {project.projectName}</h2>
                 <h3>Project Author: {project.author}</h3>
