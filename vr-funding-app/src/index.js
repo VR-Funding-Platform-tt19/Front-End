@@ -22,6 +22,10 @@ import App from './App';
 
 // ---- Redux Store for passing Props
 const store = createStore(reducer, applyMiddleware(thunk, logger))
+// Question: What state properties are we going to manage in Redux?
+//  - Form Data should be managed via component state
+//  - 
+
 
 ReactDOM.render(
   <Provider store={store}>
