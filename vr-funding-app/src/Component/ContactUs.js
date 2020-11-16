@@ -29,6 +29,7 @@ const ContactUs = () => {
 
     const history = useHistory()
     //SCHEMA
+    
     const contactUsSchema = yup.object().shape({
         name: yup
             .string()
