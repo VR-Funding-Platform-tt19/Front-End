@@ -43,19 +43,6 @@ const UpdateProject = () => {
         }
     },[id])
 
-        useEffect(()=>{
-        if(id){
-            axiosWithAuth()
-            .get(`projectURL/getproject/${id}`)
-            .then(response=>{
-                setProjectValues(response.data)
-            })
-            .catch(error=>{
-                console.log('THIS IS YOUR ERROR----->', error)
-            })
-        }
-    },[id])
-
     const updateForm = (name, value) =>{
         setProjectValues({
             ...projectValues,
