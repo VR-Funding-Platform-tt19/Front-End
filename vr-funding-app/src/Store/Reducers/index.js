@@ -26,24 +26,33 @@ const initialState = {
 // -------- Reducer Function ---------
 export const reducer = (state = initialState, action) => {
     switch(action.type){
+        
+        //INITIAL FETCHING DATA CASE
         case FETCH_PROJECT_DATA:
             return {...state, fetchingProject: true}
         case FETCH_PROJECT_SUCCESS:
             return {...state, project: action.payload, fetchingProject: true}
         case FETCH_PROJECT_FAILURE:
             return {...state, fetchingProject: false}
+
+
+        //ADD PROJECT CASES
         case ADD_PROJECT_DATA:
             return {...state, addingProject: true}
         case ADD_PROJECT_SUCCESS:
             return{...state, project: action.payload, addingProject: false}    
         case ADD_PROJECT_FAILURE:
              return {...state, addingProject: false}
+
+        //EDITING CASES
         case EDIT_PROJECT_DATA:
             return{...state, editingProject: true}
         case EDIT_PROJECT_SUCCESS:
             return{...state, project: action.payload, editingProject: false}
         case EDIT_PROJECT_FAILURE:     
             return{...state, editingProject: false}
+
+        //DELETE CASES    
         case DELETE_PROJECT_DATA:
             return{...state, deletingProject: true}
         case DELETE_PROJECT_SUCCESS:
