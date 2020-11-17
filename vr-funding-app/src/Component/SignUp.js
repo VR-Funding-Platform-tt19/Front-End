@@ -61,14 +61,70 @@ const SignUp = () => {
             setSignUpErrors({
                 ...signUpErrors, [name]: error.errors
             })
-        })    
-    }
+        });
+        setSignUpForm({
+            ...signUpForm, [name]: value
+        });
+    };
 
 
+    const signUpSubmit = (event) => {
+        event.preventDefault();
+        axios.post(/*---insert api url for sign up---*/, signUpForm)
+            .then(response => {
+                window.localStorage.setItem('token', response.data.payload);
+                alert('Successfully registered');
+                history.push(/*---insert path to profile---*/)
+            })
+            .catch(error => {
+                console.log('There is an error', error);
+            });
+        setSignUpForm(initSignUpForm);
+    };
+
+
+    useEffect(() => {
+        signUpFormSchema.isValid(signUpForm)
+        .then(valid => {
+            setDisabled(!valid);
+        });
+    }, [signUpForm]);
 
 
     return (
-        <div>
+        <SignUpPage>
+            <FormWrapper>
+                <h1>VR Funding</h1>
+                <label>Username: 
+                    <input
+                        name='username'
+                        type='text'
+                        value={signUpForm.username}
+                        onChange={inputChange}
+                        placeholder='Enter your username'
+                    />
+                </label>
+                <div>{signInErrors.username}</div>
+                <label>Password: 
+                    <input
+                        name='password'
+                        type='text'
+                        value={signUpForm.password}
+                        onChange={inputChange}
+                        placeholder='Enter your password'
+                    />
+                </label>
+                <div>{signInErrors.password}</div>
+                <label>Funder account: 
+                    <input
+                        name='funder'
+                        type='checkbox'
+                        checked={signUpForm.funder}
+                        onChange={inputChange}
+                    />
+                </label>
+                <button className='signInButton' disabled={disabled}>Sign Up</button>
+            </FormWrapper>
             {/*  Build out a sign up (registration) form. The form
             should have:
                 - name
@@ -76,7 +132,7 @@ const SignUp = () => {
                 - funder or fundraiser checkbox
                 - Any other pertinent info
             */}
-        </div>
+        </SignUpPage>
     )
 }
 
