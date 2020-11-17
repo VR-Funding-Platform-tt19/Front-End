@@ -3,13 +3,7 @@ import axios from 'axios';
 import * as yup from 'yup';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
-
-
-// ----- Need to create? ------
-// import { saveUsername } from '../store/actions/saveUsernameAction';
-// import { saveUserID } from '../store/actions/saveUserIdAction';
-// ----- Need to import ? -----
-// import { connect } from 'react-redux';
+import { axiosWithAuth } from '../Utils/axiosWithAuth'
 
 
 // ----- Form Schema ------
@@ -43,15 +37,13 @@ const initDisabled = true;
 const SignIn = (props) => {
 
     // ----- component state -----
-    const [signInForm, setSignInForm] = useState(initSignInForm);
+    const [credentials, setCredentials] = useState(initSignInForm);
+    
     const [signInErrors, setSignInErrors] = useState(initSignInErrors);
+    
     const [disabled, setDisabled] = useState(initDisabled);
 
-    // uncomment when forgotPassCard is enabled
-    // const [visible, setVisible] = useState(false);
 
-    // uncomment when { connect } from 'react-redux' is imported ?
-    // const { saveUsername, saveUserId } = props;
 
 
     // ----- helper functions -----
@@ -74,71 +66,47 @@ const SignIn = (props) => {
                     ...signInErrors, [name]: error.errors[0]
                 })
             })
+
+            setCredentials({
+                ...credentials,
+                [event.target.name]: event.target.value
+            })
     };
     
 
-    const signInFormSubmit = (event) => {
+    const login = (event) => {
         event.preventDefault();
-        const newSignInForm = {
-            username: signInForm.username.trim(),
-            password: signInForm.password.trim()
-        };
-        postNewSignInForm(newSignInForm);
+        
+        axiosWithAuth()
+            .post('api hook', credentials)
+                .then((res)=> {
+                    window.localStorage.setItem('token', res.data.payload)
+                    history.push('/dashboard')
+                })
+                .catch((error)=>{
+                    console.log(error)
+                })
     };    
 
-    // !!---These functions require '../store/actions/saveUserIdAction'---!!
-    //
-    // const saveUserIdFunc = () => {
-    //     return(
-    //         axios
-    //             .get(/*--insert API URL for saving user id--*/)
-    //             .then(response => {
-    //                 saveUserIdFunc(response.data.userid)
-    //             })
-    //             .catch(error => {
-    //                 console.log(error)
-    //             })
-    //     );
-    // };
-    //
-    // const postNewSignInForm = newSignInForm => {
-    //     axios.post(/*--insert login URL--*/, `grant_type=password&username=${signInForm.username}&password=${signInform.password}`, {
-    //         headers: {
-    //             Authorization: `Basic ${btoa('lambda-client:lambda-secret')}`, 
-    //             'Content-Type': 'application/x-www/form-urlencoded'
-    //         }
-    //     })
-    //         .then(result => {
-    //             window.localStorage.setItem('token', result.data.access_token);
-    //             saveUsername(signInForm.username);
-    //             saveUserIdFunction();
-    //             history.push(/*--insert where user goes next--*/);
-    //         })
-    //         .catch(error => {
-    //             console.log('There is an error', error);
-    //         })
-    //         .finally(() => {
-    //             setSignInForm(initSignInForm);
-    //         })
-    // };
+   
 
     useEffect(() => {
-        signInFormSchema.isValid(signInForm)
+        signInFormSchema.isValid(credentials)
         .then(valid => {
             setDisabled(!valid);
         })
-    }, [signInForm]);
+    }, [credentials]);
 
     
     return (
         <SignInPage>
-            <FormWrapper onSubmit={ signInFormSubmit }>
+            <FormWrapper onSubmit={ login }>
                 <h1>VR Funding</h1>
                 <label>Username: 
                     <input
                         name='username'
                         type='text'
-                        value={signInForm.username}
+                        value={credentials.username}
                         onChange={inputChange}
                         placeholder='Enter your username'
                     />
@@ -147,8 +115,8 @@ const SignIn = (props) => {
                 <label>Password: 
                     <input
                         name='password'
-                        type='text'
-                        value={signInForm.password}
+                        type='password'
+                        value={credentials.password}
                         onChange={inputChange}
                         placeholder='Enter your password'
                     />
@@ -164,16 +132,4 @@ const SignIn = (props) => {
     )
 }
 
-
-// uncomment when { connect } from 'react-redux' is imported ?
-// const mapStateToProps = state => {
-//     return {
-//         userid: state.saveUserId.userid,
-//         username: state.saveUsername.username
-//     };
-// };
-//
-// export default connect(mapStateToProps, { saveUserId, saveUsername })(SignIn);
-
 export default SignIn
-

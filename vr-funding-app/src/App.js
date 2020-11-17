@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Switch, Route, Link } from 'react-router-dom'
 
-import PrivateRoute from './Utils/PrivateRoute'
+import { PrivateRoute } from './Utils/PrivateRoute'
 
 //-------- Components ---------
 import SignIn from './Component/SignIn'
@@ -21,10 +21,10 @@ function App() {
   return (
     <div className="App">
       <h1>We Are In App.JS</h1>
-
+     
       <Switch>
         {/* These are the main routes */}
-        <Route exact path='/' component={SignIn}/>
+        <Route exact path='/sign-in' component={SignIn}/>
         <PrivateRoute exact path='/dashboard' component={ProjectDashboard}/>
         <Route exact path='/project/:id/' component={Project}/>
         <Route exact path='/signUp' component={SignUp}/> {/* So we will need to add a link to this some where */}

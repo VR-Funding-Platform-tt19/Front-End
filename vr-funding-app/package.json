@@ -16,11 +16,8 @@
     "redux": "^4.0.5",
     "redux-connect": "^10.0.0",
     "redux-logger": "^3.0.6",
-<<<<<<< HEAD
-    "styled-components": "^5.2.1",
-=======
     "redux-thunk": "^2.3.0",
->>>>>>> 3da5c392aa8ed1d4e290371f8abd563739f13105
+    "styled-components": "^5.2.1",
     "thunk": "0.0.1",
     "web-vitals": "^0.2.4",
     "yup": "^0.29.3"

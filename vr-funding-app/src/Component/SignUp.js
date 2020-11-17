@@ -46,7 +46,9 @@ const SignUp = () => {
 
     // -------- event Handlers ---------
     const inputChange = (event) => {
+        
         const {name, value} = event.target;
+        
         yup
         .reach(signUpFormSchema, name)
         .validate(value)
