@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import * as yup from 'yup';
+import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 
 
@@ -41,17 +42,25 @@ const initDisabled = true;
 
 const SignIn = (props) => {
 
-    // ----- component state --------
+    // ----- component state -----
     const [signInForm, setSignInForm] = useState(initSignInForm);
     const [signInErrors, setSignInErrors] = useState(initSignInErrors);
     const [disabled, setDisabled] = useState(initDisabled);
-    const history = useHistory();
+
+    // uncomment when forgotPassCard is enabled
     // const [visible, setVisible] = useState(false);
+
+    // uncomment when { connect } from 'react-redux' is imported ?
     // const { saveUsername, saveUserId } = props;
 
 
-    // ----- event handlers --------
-    const inputChange = (name, value) => {
+    // ----- helper functions -----
+    const history = useHistory();
+    
+
+    // ----- event handlers -----
+    const inputChange = (event) => {
+        const { name, value } = event.target;
         yup
             .reach(signInFormSchema, name)
             .validate(value)
@@ -68,26 +77,14 @@ const SignIn = (props) => {
     };
     
 
-    const signInFormSubmit = () => {
+    const signInFormSubmit = (event) => {
+        event.preventDefault();
         const newSignInForm = {
             username: signInForm.username.trim(),
             password: signInForm.password.trim()
         };
         postNewSignInForm(newSignInForm);
     };    
-    
-
-    const onChange = event => {
-        const { name, value } = event.target;
-        inputChange(name, value);
-    }
-
-
-    const onSubmit = event => {
-        event.preventDefault();
-        signInFormSubmit();
-    }
-
 
     // !!---These functions require '../store/actions/saveUserIdAction'---!!
     //
@@ -137,14 +134,14 @@ const SignIn = (props) => {
     
     return (
         <SignInPage>
-            <FormWrapper onSubmit={ onSubmit }>
+            <FormWrapper onSubmit={ signInFormSubmit }>
                 <h1>VR Funding</h1>
                 <label>Username: 
                     <input
                         name='username'
                         type='text'
                         value={signInForm.username}
-                        onChange={onChange}
+                        onChange={inputChange}
                     />
                 </label>
                 <div>{signInErrors.username}</div>
@@ -153,7 +150,7 @@ const SignIn = (props) => {
                         name='password'
                         type='text'
                         value={signInForm.password}
-                        onChange={onChange}
+                        onChange={inputChange}
                     />
                 </label>
                 <div>{signInErrors.password}</div>
