@@ -14,20 +14,24 @@ import { useHistory } from 'react-router-dom'
 
 import { connect } from 'react-redux'
 
+
+
 // ---------  Components ---------
 import ProjectCard from '../Component/ProjectCard'
 
 
 
 
-const ProjectDashboard = () => {
+const ProjectDashboard = (props) => {
+    
+    props.test()
 
     // we need to add setProjectData to the global props store
     const [ projectData, setProjectData ]= useState([])
 
     const history = useHistory()
 
-
+    // This will pull down all the projects
     useEffect(()=> {
         axiosWithAuth()
             .get('/entrepreneur/projects')
@@ -61,7 +65,7 @@ const mapStateToProps = (state) => {
     return {
         isLoading: state.isLoading,
         projects: state.projectData,
-        error: state.error
+        error: state.error,
     }
 }
 
