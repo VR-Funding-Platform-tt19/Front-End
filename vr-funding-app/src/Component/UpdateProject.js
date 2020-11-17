@@ -25,7 +25,7 @@ const initialProjectValues = {
 
 const UpdateProject = () => {
     //SETTING INITIAL FORM STATE
-    const [projectValues, setProjectValues] = useState(initialProject)
+    const [projectValues, setProjectValues] = useState(initialProjectValues)
     const [userId, setUserId]= useState(0)
     const {id} = useParams()
 

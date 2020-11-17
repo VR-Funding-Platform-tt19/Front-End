@@ -2,12 +2,14 @@
 // This component when rendered will give the information of just one project
 // You will have an 'Edit' and 'Delete' buttons with functionality
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect} from 'react'
+
+
 
 import axios from 'axios'
 import { axiosWithAuth } from '../Utils/axiosWithAuth'
 import { useHistory, useParams } from 'react-router-dom'
-import { connect } from 'react-redux'
+
 
 
 const Project = (props) => {
@@ -17,7 +19,6 @@ const Project = (props) => {
     const { id } = useParams()
     const history = useHistory()
 
-    
 
     useEffect(() => {
         axiosWithAuth()
