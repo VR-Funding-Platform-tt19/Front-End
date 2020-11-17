@@ -16,18 +16,19 @@ import * as yup from 'yup'
 // This information needs to be passed to Project
 
 const initialState = {
-    projectName:'',
-    author:'',
+    projectname:'',
     description:'',
-    fundingGoal:'',
-    // image:''// look up how to upload a picture to the backend as a url
+    projecttype:'',
+    projectimage:'',
+    fundedamt:''
 }
 
 const initialProjectErrors = {
-    projectName:'',
-    author:'',
+    projectname:'',
     description:'',
-    fundingGoal:'',
+    projecttype:'',
+    projectimage:'',
+    fundedamt:''
 };
 
 const ProjectForm = () => {
@@ -40,6 +41,7 @@ const ProjectForm = () => {
     // ------ Event Handlers ----
 
     const handleChange = (e) => {
+        console.log()
         yup
             .reach(projectFormSchema, e.target.name)
             .validate(e.target.value)
@@ -84,17 +86,17 @@ const ProjectForm = () => {
             <form onSubmit={onSubmit}>
                 <label>Project Name:</label>
                 <input
-                    name='projectName'
+                    name='projectname'
                     type='text'
-                    value={newProject.projectName}
+                    value={newProject.projectname}
                     onChange={handleChange}
                 />
 
                 <label> Author:</label>
                 <input
-                    name='author'
+                    name='projecttype'
                     type='text'
-                    value={newProject.author}
+                    value={newProject.projecttype}
                     onChange={handleChange}
                 />
 
@@ -108,11 +110,12 @@ const ProjectForm = () => {
 
                 <label>Funding Goal:</label>
                 <input
-                    name='fundingGoal'
+                    name='fundedamt'
                     type='text'
-                    value={newProject.fundingGoal}
+                    value={newProject.fundedamt}
                     onChange={handleChange}
                 />
+                <button>Submit</button>
             </form>
         </div>
     )
