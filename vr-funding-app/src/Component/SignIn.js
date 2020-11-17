@@ -129,8 +129,6 @@ const SignIn = (props) => {
         })
     }, [signInForm]);
 
-
-    
     
     return (
         <SignInPage>
@@ -142,6 +140,7 @@ const SignIn = (props) => {
                         type='text'
                         value={signInForm.username}
                         onChange={inputChange}
+                        placeholder='Enter your username'
                     />
                 </label>
                 <div>{signInErrors.username}</div>
@@ -151,20 +150,20 @@ const SignIn = (props) => {
                         type='text'
                         value={signInForm.password}
                         onChange={inputChange}
+                        placeholder='Enter your password'
                     />
                 </label>
                 <div>{signInErrors.password}</div>
                 {/* <div className='forgotPassCard'>
                     {visible ? <ForgotPassword hideForgotPass={setVisible}/> : null}
                 </div> */}
-                <button className='signInButtom' disabled={disabled}>Sign In</button>
+                <button className='signInButton' disabled={disabled}>Sign In</button>
                 {/* <button className='forgotPassButton' onClick={() => visible === true ? setVisible(false) : setVisible(true)}>Forgot Password</button> */}
             </FormWrapper>
         </SignInPage>
     )
 }
 
-<<<<<<< HEAD
 
 // uncomment when { connect } from 'react-redux' is imported ?
 // const mapStateToProps = state => {
@@ -178,6 +177,3 @@ const SignIn = (props) => {
 
 export default SignIn
 
-=======
-export default SignIn
->>>>>>> 3da5c392aa8ed1d4e290371f8abd563739f13105
