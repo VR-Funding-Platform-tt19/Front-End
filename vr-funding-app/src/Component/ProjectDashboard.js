@@ -12,6 +12,10 @@ import axios from 'axios'
 
 import { connect } from 'react-redux'
 
+// ---------  Components ---------
+import ProjectCard from '../Component/ProjectCard'
+
+
 const ProjectDashboard = () => {
 
     // we need to add setProjectData to the global props store
@@ -35,7 +39,7 @@ const ProjectDashboard = () => {
     return (
         <div>
             <h1>We are in ProjectDashboard</h1>
-            <h1>Welcome Back {userName} </h1>
+            {/* <h1>Welcome Back {userName} </h1> */}
             <div>
                 {projectData.map((project)=>{
 
@@ -48,8 +52,11 @@ const ProjectDashboard = () => {
 }
 
 const mapStateToProps = (state) => {
-    
-
+    return {
+        isLoading: state.isLoading,
+        projects: state.projectData,
+        error: state.error
+    }
 }
 
-export default ProjectDashboard
+export default connect(mapStateToProps)(ProjectDashboard)
