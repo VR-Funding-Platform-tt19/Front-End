@@ -20,9 +20,8 @@ const Project = (props) => {
     
 
     useEffect(() => {
-        // axiosWithAuth()
-        axios
-            .get(`Need add get url with id of project ${id}`)
+        axiosWithAuth()
+            .get(`/entrepreneur/projects${id}`)
                 .then((res)=> {
                     setProjectData(res.data)
                 })
@@ -33,9 +32,8 @@ const Project = (props) => {
 
     const handleDeleteProject = (e) => {
         e.preventDefault()
-        // axiosWithAuth()
-        axios
-            .delete(`add api hook ${id}`)
+        axiosWithAuth()
+            .delete(`/projects/post/${id}`)
                 .then((res)=>{
                     //set state
                     // setMainProjectData(res.data)

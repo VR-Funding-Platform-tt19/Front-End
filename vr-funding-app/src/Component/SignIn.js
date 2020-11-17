@@ -73,12 +73,13 @@ const SignIn = (props) => {
             })
     };
     
-
+    // Note: 
+    // Not sure if this is the right axios request?
     const login = (event) => {
         event.preventDefault();
         
         axiosWithAuth()
-            .post('api hook', credentials)
+            .post('/createnewuser', credentials)
                 .then((res)=> {
                     window.localStorage.setItem('token', res.data.payload)
                     history.push('/dashboard')

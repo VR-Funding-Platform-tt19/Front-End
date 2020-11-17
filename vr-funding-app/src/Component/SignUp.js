@@ -63,22 +63,26 @@ const SignUp = () => {
             })
         });
         setSignUpForm({
-            ...signUpForm, [name]: value
+            ...signUpForm, 
+            [name]: value
         });
     };
 
+    //Note:
+    // Not sure if this is the right axios request
+    const signUpSubmit = (e) => {
+        e.preventDefault();
+        axios
+            .post('/createnewuser',signUpForm)
+                .then(response => {
+                    // window.localStorage.setItem('token', response.data.payload);
+                    alert('Successfully registered');
+                    history.push('/sign-in')
+                })
+                .catch(error => {
+                    console.log('There is an error', error);
+                });
 
-    const signUpSubmit = (event) => {
-        event.preventDefault();
-        axios.post(/*---insert api url for sign up---*/, signUpForm)
-            .then(response => {
-                window.localStorage.setItem('token', response.data.payload);
-                alert('Successfully registered');
-                history.push(/*---insert path to profile---*/)
-            })
-            .catch(error => {
-                console.log('There is an error', error);
-            });
         setSignUpForm(initSignUpForm);
     };
 
@@ -93,7 +97,7 @@ const SignUp = () => {
 
     return (
         <SignUpPage>
-            <FormWrapper>
+            <FormWrapper onSubmit={signUpSubmit}>
                 <h1>VR Funding</h1>
                 <label>Username: 
                     <input
@@ -104,17 +108,17 @@ const SignUp = () => {
                         placeholder='Enter your username'
                     />
                 </label>
-                <div>{signInErrors.username}</div>
+                <div>{signUpErrors.username}</div>
                 <label>Password: 
                     <input
                         name='password'
-                        type='text'
+                        type='password'
                         value={signUpForm.password}
                         onChange={inputChange}
                         placeholder='Enter your password'
                     />
                 </label>
-                <div>{signInErrors.password}</div>
+                <div>{signUpErrors.password}</div>
                 <label>Funder account: 
                     <input
                         name='funder'
@@ -125,13 +129,7 @@ const SignUp = () => {
                 </label>
                 <button className='signInButton' disabled={disabled}>Sign Up</button>
             </FormWrapper>
-            {/*  Build out a sign up (registration) form. The form
-            should have:
-                - name
-                - password
-                - funder or fundraiser checkbox
-                - Any other pertinent info
-            */}
+           
         </SignUpPage>
     )
 }
