@@ -6,6 +6,8 @@ import {useHistory} from 'react-router-dom'
 
 import axios from 'axios'
 
+import { contactUsSchema } from './FormSchemas/contactUsSchema'
+
 
 const initialContactUsForm = {
     name: '',
@@ -29,20 +31,6 @@ const ContactUs = () => {
     const [errors, setErrors] = useState(initialErrors)
 
     const history = useHistory()
-    //SCHEMA
-    
-    const contactUsSchema = yup.object().shape({
-        name: yup
-            .string()
-            .required('Must include a name'),
-        email: yup
-            .string()
-            .email('Must be valid email address')
-            .required('Must include email address'),
-        message: yup
-            .string()
-            .required('Must include a message')
-})
 
     const inputChange = (name, value) => {
         yup
