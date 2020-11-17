@@ -1,9 +1,10 @@
 /////STRETCH//////
 
-import React from 'react'
-import {axiosWithAuth} from '../Utils/axiosWithAuth'
+import React, {useState, useEffect} from 'react'
 import * as yup from 'yup'
 import {useHistory} from 'react-router-dom'
+
+import axios from 'axios'
 
 
 const initialContactUsForm = {
@@ -87,19 +88,20 @@ const ContactUs = () => {
 
     const postNewContactForm = (newContactForm) => {
         // console.log(listOfContactForms)
-        axios.post('https://reqres.in/api/ContactUs', newContactForm) // need the api endpoint
-            .then(response => {
-                setListOfContactForms(listOfContactForms.concat(response.data))
-                // console.log(listOfContactForms)
-            })
-            .catch(error => {
-                console.log('THIS IS YOUR ERROR------------>', error)
-                // console.log(listOfContactForms)
-            })
-            . finally(() => {
-                setcontactUsForm(initialContactUsForm)
-                // console.log(listOfContactForms)
-            })
+        axios
+            .post('https://reqres.in/api/ContactUs', newContactForm) // need the api endpoint
+                .then(response => {
+                    setListOfContactForms(listOfContactForms.concat(response.data))
+                    // console.log(listOfContactForms)
+                })
+                .catch(error => {
+                    console.log('THIS IS YOUR ERROR------------>', error)
+                    // console.log(listOfContactForms)
+                })
+                . finally(() => {
+                    setContactUsForm(initialContactUsForm)
+                    // console.log(listOfContactForms)
+                })
             
     }
     
@@ -142,7 +144,7 @@ const ContactUs = () => {
                 onChange={handleChange}
                 />
             </form>
-            <button className='sendButton' disabled={diabled} onClick={()=> history.push('/contact-confirmation')}>Send</button>
+            <button className='sendButton' disabled={disabled} onClick={()=> history.push('/contact-confirmation')}>Send</button>
         </div>
     )
 }
