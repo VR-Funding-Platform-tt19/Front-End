@@ -41,7 +41,27 @@ const SignUp = () => {
     const [disabled, setDisabled] = useState(initDisabled);
 
     
-    // -------- Event Handlers ---------
+    // ----- helper functions -----
+    const history = useHistory();
+
+    // -------- event Handlers ---------
+    const inputChange = (event) => {
+        const {name, value} = event.target;
+        yup
+        .reach(signUpFormSchema, name)
+        .validate(value)
+        .then(valid => {
+            setSignUpErrors({
+                ...signUpErrors, [name]:''
+            })
+        .catch(error => {
+            setSignUpErrors({
+                ...signUpErrors, [name]: error.errors
+            })
+        })
+    
+
+
 
 
 

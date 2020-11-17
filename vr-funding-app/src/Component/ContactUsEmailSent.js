@@ -4,9 +4,10 @@ import React from 'react'
 
 const ContactUsEmailSent = () => {
     return (
-        <div>
-            
-        </div>
+    <div>
+        <p>Thank you for your message we will be in touch soon. </p>
+    </div>
+
     )
 }
 

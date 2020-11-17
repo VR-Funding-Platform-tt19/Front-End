@@ -164,6 +164,7 @@ const SignIn = (props) => {
     )
 }
 
+<<<<<<< HEAD
 
 // uncomment when { connect } from 'react-redux' is imported ?
 // const mapStateToProps = state => {
@@ -177,3 +178,6 @@ const SignIn = (props) => {
 
 export default SignIn
 
+=======
+export default SignIn
+>>>>>>> 3da5c392aa8ed1d4e290371f8abd563739f13105
