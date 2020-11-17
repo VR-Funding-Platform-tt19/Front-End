@@ -12,7 +12,7 @@ import logger from 'redux-logger';
 import thunk from 'redux-thunk'
 
 // --------- Reducer Function -----------
-import { reducer } from './store/reducer'
+import { reducer } from './Store/Reducers/index'
 
 // --------- Routing ----------------
 import { BrowserRouter as Router } from 'react-router-dom'
