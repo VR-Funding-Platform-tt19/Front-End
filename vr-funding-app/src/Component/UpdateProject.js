@@ -100,7 +100,7 @@ const UpdateProject = () => {
                 type='text'
                 placeholder='Please describe your project'
                 defaultValue={projectValues.description}
-                onChange={handleprojectInput}
+                onChange={handleChange}
                 />
 
                 <label>Funding Goal: {' '}</label>

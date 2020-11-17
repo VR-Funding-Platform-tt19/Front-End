@@ -24,7 +24,7 @@ import ProjectCard from '../Component/ProjectCard'
 
 const ProjectDashboard = (props) => {
     
-    props.test()
+    
 
     // we need to add setProjectData to the global props store
     const [ projectData, setProjectData ]= useState([])
@@ -34,10 +34,10 @@ const ProjectDashboard = (props) => {
     // This will pull down all the projects
     useEffect(()=> {
         axiosWithAuth()
-            .get('/entrepreneur/projects')
+            .get('/entrepreneurs/projects')
                 .then((res)=> {
-                    console.log(res)
-                    // setProjectData(res.data)
+                    // console.log(res)
+                    setProjectData(res.data)
                 })
                 .catch((error)=>{
                     console.log(error)
