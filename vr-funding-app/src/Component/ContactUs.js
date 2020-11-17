@@ -132,7 +132,7 @@ const ContactUs = () => {
                 onChange={handleChange}
                 />
             </form>
-            <button className='sendButton' disabled={disabled} onClick={()=> history.push('/contact-confirmation')}>Send</button>
+            <button className='sendButton' disabled={initalDisabled} onClick={()=> history.push('/contact-confirmation')}>Send</button>
         </div>
     )
 }
