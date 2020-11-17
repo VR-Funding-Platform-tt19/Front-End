@@ -23,9 +23,6 @@ import ProjectCard from '../Component/ProjectCard'
 
 
 const ProjectDashboard = (props) => {
-    
-    props.test()
-
     // we need to add setProjectData to the global props store
     const [ projectData, setProjectData ]= useState([])
 
