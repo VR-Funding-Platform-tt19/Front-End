@@ -16,18 +16,20 @@ import * as yup from 'yup'
 // This information needs to be passed to Project
 
 const initialState = {
-    projectName:'',
-    author:'',
-    description:'',
-    fundingGoal:'',
+    projectname: "",
+    description: "",
+    author: "",
+    projectimage: "",
+    fundedamt: ""
     // image:''// look up how to upload a picture to the backend as a url
 }
 
 const initialProjectErrors = {
-    projectName:'',
-    author:'',
-    description:'',
-    fundingGoal:'',
+    projectname: "",
+    description: "",
+    author: "",
+    projectimage: "",
+    fundedamt: ""
 };
 
 const ProjectForm = () => {
@@ -114,6 +116,7 @@ const ProjectForm = () => {
                     onChange={handleChange}
                 />
             </form>
+            <button>Submit</button>
         </div>
     )
 }

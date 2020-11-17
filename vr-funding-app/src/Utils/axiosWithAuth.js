@@ -8,6 +8,6 @@ export const axiosWithAuth = () =>{
             authorization:token
         },
         //fill out baseURL for auth
-        baseURL: 'https://pedrocasuso-vr-funding-project.herokuapp.com'
+        baseURL: 'http://pedrocasuso-vr-funding-project.herokuapp.com'
     })
 }

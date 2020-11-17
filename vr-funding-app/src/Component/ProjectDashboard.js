@@ -31,7 +31,7 @@ const ProjectDashboard = (props) => {
     // This will pull down all the projects
     useEffect(()=> {
         axiosWithAuth()
-            .get('/entrepreneur/projects')
+            .get('/entrepreneurs/projects')
                 .then((res)=> {
                     console.log(res)
                     // setProjectData(res.data)
