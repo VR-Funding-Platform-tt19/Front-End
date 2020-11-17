@@ -71,7 +71,7 @@ const ProjectForm = () => {
                 .then((res) => {
                     console.log(res)
                     // What does the post return 
-                    // props.setProjectData(res.data)
+                    setNewProject(res.data)
                 })
                 .catch((error)=> {
                     console.log(error)
