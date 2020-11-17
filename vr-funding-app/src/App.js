@@ -12,6 +12,7 @@ import ContactUs from './Component/ContactUs'
 import ForgotPassword from './Component/ForgotPassword'
 import SignUp from './Component/SignUp'
 import UpdateProject from './Component/UpdateProject'
+import ProjectForm from './Component/ProjectForm'
 
 function App() {
 
@@ -28,7 +29,8 @@ function App() {
         <PrivateRoute exact path='/dashboard' component={ProjectDashboard}/>
         <Route exact path='/project/:id/' component={Project}/>
         <Route exact path='/signUp' component={SignUp}/> {/* So we will need to add a link to this some where */}
-        <Route exact path='update-project' component={UpdateProject}/>
+        <Route exact path='/update-project' component={UpdateProject}/>
+        <Route exact path='/project-form' component={ProjectForm}/>
 
         {/* additional routes */}
         <Route exact path='/contact' component={ContactUs}/>

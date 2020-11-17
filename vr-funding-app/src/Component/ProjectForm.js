@@ -5,16 +5,17 @@
 
 
 import React, { useState } from 'react'
-import axios from 'axios'
 import { useHistory } from 'react-router-dom'
 import { axiosWithAuth } from '../Utils/axiosWithAuth'
+
+import { projectFormSchema } from './FormSchemas/projectFormSchema'
+import * as yup from 'yup'
 
 // Notes:
 // This is the form where a fundraiser can create their fundraising project.
 // This information needs to be passed to Project
 
 const initialState = {
-    id:'',
     projectName:'',
     author:'',
     description:'',
@@ -22,15 +23,39 @@ const initialState = {
     // image:''// look up how to upload a picture to the backend as a url
 }
 
+const initialProjectErrors = {
+    projectName:'',
+    author:'',
+    description:'',
+    fundingGoal:'',
+};
+
 const ProjectForm = () => {
 
-    const [newProject, setNewProject ] = useState(initialState) // state will hold new project info
+    const [ newProject, setNewProject ] = useState(initialState) // state will hold new project info
+    const [ newProjectErrors, setNewProjectErrors ] = useState(initialProjectErrors)
 
     const history = useHistory()
 
     // ------ Event Handlers ----
 
     const handleChange = (e) => {
+        yup
+            .reach(projectFormSchema, e.target.name)
+            .validate(e.target.value)
+            .then(valid => {
+                setNewProjectErrors({
+                    ...newProjectErrors, 
+                    [e.target.name]: ''
+                })
+            })
+            .catch((error) => {
+                setNewProjectErrors({
+                    ...newProjectErrors,
+                    [e.target.name]: error.errors[0]
+                })
+            })
+
         setNewProject({
             ...newProject,
             [e.target.name]:e.target.value
@@ -39,9 +64,8 @@ const ProjectForm = () => {
 
     const onSubmit = (e) => {
         e.preventDefault()
-        // axiosWithAuth()
-        axios
-            .post('{/* need api hook */', newProject)
+        axiosWithAuth()
+            .post('/projects/project', newProject)
                 .then((res) => {
                     console.log(res)
                     // What does the post return 

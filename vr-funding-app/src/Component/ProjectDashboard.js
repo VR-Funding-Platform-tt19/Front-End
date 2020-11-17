@@ -10,10 +10,14 @@ import React, { useState, useEffect } from 'react'
 import { axiosWithAuth } from '../Utils/axiosWithAuth'
 import axios from 'axios'
 
+import { useHistory } from 'react-router-dom'
+
 import { connect } from 'react-redux'
 
 // ---------  Components ---------
 import ProjectCard from '../Component/ProjectCard'
+
+
 
 
 const ProjectDashboard = () => {
@@ -21,11 +25,12 @@ const ProjectDashboard = () => {
     // we need to add setProjectData to the global props store
     const [ projectData, setProjectData ]= useState([])
 
+    const history = useHistory()
+
 
     useEffect(()=> {
-        // axiosWithAuth()
-        axios
-            .get('Need API Hook')
+        axiosWithAuth()
+            .get('/entrepreneur/projects')
                 .then((res)=> {
                     console.log(res)
                     // setProjectData(res.data)
@@ -40,12 +45,13 @@ const ProjectDashboard = () => {
         <div>
             <h1>We are in ProjectDashboard</h1>
             {/* <h1>Welcome Back {userName} </h1> */}
+            <button onClick={() => history.push('/project-form')}>Create a New Project</button>
             <div>
-                {projectData.map((project)=>{
+                {projectData.map((project)=> (
 
                     <ProjectCard key={project.id} project={project}/>
 
-                })}
+                ))}
             </div>
         </div>
     )
