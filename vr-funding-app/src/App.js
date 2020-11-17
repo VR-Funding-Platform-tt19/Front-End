@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Switch, Route, Link } from 'react-router-dom'
 
-import { PrivateRoute } from './Utils/PrivateRoute'
+import PrivateRoute from './Utils/PrivateRoute'
 
 //-------- Components ---------
 import SignIn from './Component/SignIn'
