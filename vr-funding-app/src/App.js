@@ -1,5 +1,7 @@
 import React from 'react'
 
+import './app.css'
+
 import { Switch, Route } from 'react-router-dom'
 
 import { PrivateRoute } from './Utils/PrivateRoute'
@@ -13,6 +15,7 @@ import ForgotPassword from './Component/ForgotPassword'
 import SignUp from './Component/SignUp'
 import UpdateProject from './Component/UpdateProject'
 import ProjectForm from './Component/ProjectForm'
+import MeetTheTeam from './Component/MeetTheTeam'
 
 function App() {
 
@@ -21,7 +24,7 @@ function App() {
   // Will need to add routing here
   return (
     <div className="App">
-      <h1>We Are In App.JS</h1>
+     
      
       <Switch>
         {/* These are the main routes */}
@@ -35,6 +38,7 @@ function App() {
         {/* additional routes */}
         <Route exact path='/contact' component={ContactUs}/>
         <Route excact path='/reset-password' component={ForgotPassword}/>
+        <Route exact path='/about-us' component={MeetTheTeam}/>
       </Switch>
     </div>
   );

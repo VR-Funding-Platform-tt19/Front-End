@@ -43,13 +43,15 @@ const Project = (props) => {
     },[])
 
     const handleDeleteProject = (e) => {
+        console.log(projectData)
         e.preventDefault()
         axiosWithAuth()
-            .delete(`/projects/post/${id}`)
+            .delete(`/projects/post/16`)
                 .then((res)=>{
                     //set state
                     // setMainProjectData(res.data)
-                    history.push('/dashboard')
+                    // history.push('/dashboard')
+                    console.log(res.data)
                 })
                 .catch((error)=> {
                     console.log(error)

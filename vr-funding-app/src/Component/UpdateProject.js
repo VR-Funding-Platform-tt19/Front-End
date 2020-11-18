@@ -25,11 +25,11 @@ const initialProjectValues = {
 const UpdateProject = () => {
     //SETTING INITIAL FORM STATE
     const [projectValues, setProjectValues] = useState(initialProjectValues)
-    // const [userId, setUserId]= useState(0)
+    
+    
     const {id} = useParams()
 
-    console.log(id)
-    console.log(projectValues)
+    
 
     //USE EFFECT AXIOSWITHAUTH()CALL FOR ID
     useEffect(()=>{
@@ -59,12 +59,12 @@ const UpdateProject = () => {
             [event.target.name]: event.target.value
         })
     }
-
+    // put endpoint not working
     const handleSubmit = (event) =>{
         console.log(projectValues)
         event.preventDefault()
         axiosWithAuth()
-            .put(`projects/post/16`, projectValues)
+            .put('projects/post/16', projectValues)
                 .then(res=>{
                     console.log(res.data)
                     history.push('/dashboard')
@@ -75,23 +75,21 @@ const UpdateProject = () => {
         
     }
     return(
-        <>
+        <div>
             <form onSubmit={handleSubmit}>
                 <h2 className='form-title'>Add A New Project</h2>
-                <label>Project Name {' '}</label>
+                <label>Project Name: {' '}</label>
                 <input
                 name='projectname'
                 type='text'
-                placeholder='Please enter a project name'
                 defaultValue={projectValues.projectname}
                 onChange={handleChange}
                 />
 
-                <label>Project Author {' '}</label>
+                <label>Project Author: {' '}</label>
                 <input
                 name='author'
                 type='text'
-                placeholder='Project Author'
                 defaultValue={projectValues.author}
                 onChange={handleChange}
                 />
@@ -100,7 +98,6 @@ const UpdateProject = () => {
                 <input
                 name='description'
                 type='text'
-                placeholder='Please describe your project'
                 defaultValue={projectValues.description}
                 onChange={handleChange}
                 />
@@ -108,13 +105,13 @@ const UpdateProject = () => {
                 <label>Funding Goal: {' '}</label>
                 <input
                 name='fundedamt'
-                placeholder='Funding Goal'
+                type='number'
                 defaultValue={projectValues.fundedamt}
                 onChange={handleChange}
                 />
                 <button>Finish Editing</button>
             </form>
-        </> 
+        </div> 
     )
 }
     
