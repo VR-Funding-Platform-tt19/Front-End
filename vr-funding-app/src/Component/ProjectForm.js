@@ -8,6 +8,7 @@ import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { axiosWithAuth } from '../Utils/axiosWithAuth'
 
+
 import { projectFormSchema } from './FormSchemas/projectFormSchema'
 import * as yup from 'yup'
 
@@ -17,7 +18,6 @@ import * as yup from 'yup'
 
 const initialState = 
     {
-        
         projectname: "pedrotest",
         description: "test1",
         author: "test",
@@ -66,12 +66,13 @@ const ProjectForm = () => {
             [e.target.name]:e.target.value
         })
     }
-
+    const addNewProject = newProject
+    
     const onSubmit = (e) => {
         e.preventDefault()
         console.log(newProject)
         axiosWithAuth()
-            .post('/projects/project', newProject)
+            .post('/projects/project',addNewProject)
                 .then((res) => {
                     console.log(res)
                     // What does the post return 
