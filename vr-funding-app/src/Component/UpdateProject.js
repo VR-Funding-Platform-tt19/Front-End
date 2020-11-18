@@ -38,7 +38,7 @@ const UpdateProject = () => {
             .get(`/entrepreneurs/projects`)
             .then(res=>{
                 console.log(res.data)
-                const project = res.data.find((proj)=> proj.projectid == id)
+                const project = res.data.find((proj)=> proj.projectid == id) // do not change to ===
                 setProjectValues(project)
             })
             .catch(error=>{
@@ -59,12 +59,13 @@ const UpdateProject = () => {
             [event.target.name]: event.target.value
         })
     }
+    console.log(id)
     // put endpoint not working
     const handleSubmit = (event) =>{
         console.log(projectValues)
         event.preventDefault()
         axiosWithAuth()
-            .put('projects/post/16', projectValues)
+            .put('projects/post/' + id, projectValues)
                 .then(res=>{
                     console.log(res.data)
                     history.push('/dashboard')

@@ -34,24 +34,23 @@ const Project = (props) => {
             .get('/entrepreneurs/projects')
                 .then((res)=> {
                     console.log(res.data)
-                    const project = res.data.find((proj)=> proj.projectid == id)
+                    const project = res.data.find((proj)=> proj.projectid == id) // do not change to ===
                     setProjectData(project)
                 })
                 .catch((error)=> {
                     console.log(error)
                 })
     },[])
-
+    console.log(id)
     const handleDeleteProject = (e) => {
         console.log(projectData)
         e.preventDefault()
         axiosWithAuth()
-            .delete(`/projects/post/16`)
+            .delete('/projects/post/' + id)
                 .then((res)=>{
                     //set state
                     // setMainProjectData(res.data)
-                    // history.push('/dashboard')
-                    console.log(res.data)
+                    history.push('/dashboard')
                 })
                 .catch((error)=> {
                     console.log(error)
