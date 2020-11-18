@@ -16,20 +16,21 @@ import * as yup from 'yup'
 // This information needs to be passed to Project
 
 const initialState = {
-    projectname: "",
-    description: "",
-    author: "",
-    projectimage: "",
-    fundedamt: ""
-    // image:''// look up how to upload a picture to the backend as a url
+    "user": {},
+    "projectid": 0,
+    "projectname": "",
+    "description": "",
+    "author": "",
+    "projectimage": "test image",
+    "fundedamt": 100
 }
 
 const initialProjectErrors = {
-    projectname: "",
-    description: "",
-    author: "",
-    projectimage: "",
-    fundedamt: ""
+    "projectname": "",
+    "description": "",
+    "author": "",
+    "projectimage": "",
+    "fundedamt": 100
 };
 
 const ProjectForm = () => {
@@ -42,6 +43,7 @@ const ProjectForm = () => {
     // ------ Event Handlers ----
 
     const handleChange = (e) => {
+        console.log()
         yup
             .reach(projectFormSchema, e.target.name)
             .validate(e.target.value)
@@ -66,18 +68,19 @@ const ProjectForm = () => {
 
     const onSubmit = (e) => {
         e.preventDefault()
+        console.log(newProject)
         axiosWithAuth()
             .post('/projects/project', newProject)
                 .then((res) => {
                     console.log(res)
                     // What does the post return 
                     setNewProject(res.data)
+                    history.push('/entrepreneurs/projects') // need to add routing information 
                 })
                 .catch((error)=> {
                     console.log(error)
                 })
         // onsubmit the user needs to be routed back to the dashboard?
-        history.push('') // need to add routing information 
     }
 
     return (
@@ -86,9 +89,9 @@ const ProjectForm = () => {
             <form onSubmit={onSubmit}>
                 <label>Project Name:</label>
                 <input
-                    name='projectName'
+                    name='projectname'
                     type='text'
-                    value={newProject.projectName}
+                    value={newProject.projectname}
                     onChange={handleChange}
                 />
 
@@ -110,13 +113,13 @@ const ProjectForm = () => {
 
                 <label>Funding Goal:</label>
                 <input
-                    name='fundingGoal'
-                    type='text'
-                    value={newProject.fundingGoal}
+                    name='fundedamt'
+                    type='number'
+                    value={newProject.fundedamt}
                     onChange={handleChange}
                 />
+                <button>Submit</button>
             </form>
-            <button>Submit</button>
         </div>
     )
 }
