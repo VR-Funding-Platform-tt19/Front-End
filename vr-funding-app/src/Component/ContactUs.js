@@ -21,7 +21,7 @@ const initialErrors = {
     message: '',
 }
 
-const initalDisabled = true
+const initialDisabled = true
 
 const initialListOfContactForms = []
 
@@ -29,6 +29,7 @@ const ContactUs = () => {
     const [listOfContactForms, setListOfContactForms] = useState(initialListOfContactForms)
     const [contactUsForm, setContactUsForm] = useState(initialContactUsForm)
     const [errors, setErrors] = useState(initialErrors)
+    const [disabled, setDisabled] = useState(initialDisabled)
 
     const history = useHistory()
 
@@ -105,7 +106,7 @@ const ContactUs = () => {
         <div>
             <form onSubmit={handleSubmit}>
                 <h1>Want to get in touch?</h1>
-                <Label>Name: {' '}</Label>
+                <label>Name: {' '}</label>
                 <input
                 name='name'
                 type='text'
@@ -114,7 +115,7 @@ const ContactUs = () => {
                 onChange={handleChange}
                 />
 
-                <Label>Email: {' '}</Label>
+                <label>Email: {' '}</label>
                 <input
                 name='email'
                 type='text'
@@ -123,7 +124,7 @@ const ContactUs = () => {
                 onChange={handleChange}
                 />
 
-                <Label>Message: {' '}</Label>
+                <label>Message: {' '}</label>
                 <input
                 name='message'
                 type='text'
@@ -132,7 +133,7 @@ const ContactUs = () => {
                 onChange={handleChange}
                 />
             </form>
-            <button className='sendButton' disabled={disabled} onClick={()=> history.push('/contact-confirmation')}>Send</button>
+            <button className='sendButton' disabled={initialDisabled} onClick={()=> history.push('/contact-confirmation')}>Send</button>
         </div>
     )
 }

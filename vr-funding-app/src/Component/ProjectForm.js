@@ -8,6 +8,7 @@ import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { axiosWithAuth } from '../Utils/axiosWithAuth'
 
+
 import { projectFormSchema } from './FormSchemas/projectFormSchema'
 import * as yup from 'yup'
 
@@ -15,19 +16,22 @@ import * as yup from 'yup'
 // This is the form where a fundraiser can create their fundraising project.
 // This information needs to be passed to Project
 
-const initialState = {
-    projectName:'',
-    author:'',
-    description:'',
-    fundingGoal:'',
-    // image:''// look up how to upload a picture to the backend as a url
-}
+const initialState = 
+    {
+        projectname: "pedrotest",
+        description: "test1",
+        author: "test",
+        projectimage: "test",
+        fundedamt: 5
+    }
+
 
 const initialProjectErrors = {
-    projectName:'',
-    author:'',
-    description:'',
-    fundingGoal:'',
+    "projectname": "",
+    "description": "",
+    "author": "",
+    "projectimage": "",
+    "fundedamt": 100
 };
 
 const ProjectForm = () => {
@@ -40,6 +44,7 @@ const ProjectForm = () => {
     // ------ Event Handlers ----
 
     const handleChange = (e) => {
+        console.log()
         yup
             .reach(projectFormSchema, e.target.name)
             .validate(e.target.value)
@@ -61,21 +66,23 @@ const ProjectForm = () => {
             [e.target.name]:e.target.value
         })
     }
-
+    const addNewProject = newProject
+    
     const onSubmit = (e) => {
         e.preventDefault()
+        console.log(newProject)
         axiosWithAuth()
-            .post('/projects/project', newProject)
+            .post('/projects/project',addNewProject)
                 .then((res) => {
                     console.log(res)
                     // What does the post return 
-                    // props.setProjectData(res.data)
+                    // setNewProject(res.data)
+                    history.push('/entrepreneurs/projects') // need to add routing information 
                 })
                 .catch((error)=> {
-                    console.log(error)
+                    console.log(error.response)
                 })
         // onsubmit the user needs to be routed back to the dashboard?
-        history.push('') // need to add routing information 
     }
 
     return (
@@ -84,9 +91,9 @@ const ProjectForm = () => {
             <form onSubmit={onSubmit}>
                 <label>Project Name:</label>
                 <input
-                    name='projectName'
+                    name='projectname'
                     type='text'
-                    value={newProject.projectName}
+                    value={newProject.projectname}
                     onChange={handleChange}
                 />
 
@@ -108,11 +115,12 @@ const ProjectForm = () => {
 
                 <label>Funding Goal:</label>
                 <input
-                    name='fundingGoal'
-                    type='text'
-                    value={newProject.fundingGoal}
+                    name='fundedamt'
+                    type='number'
+                    value={newProject.fundedamt}
                     onChange={handleChange}
                 />
+                <button>Submit</button>
             </form>
         </div>
     )

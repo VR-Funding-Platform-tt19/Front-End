@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import { useHistory } from 'react-router-dom';
-import axios from 'axios';
+import {axiosWithAuth} from '../Utils/axiosWithAuth';
 import * as yup from 'yup';
 import styled from 'styled-components';
+
 
 // ----- Form Schema ------
 import { signUpFormSchema } from './FormSchemas/signUpFormSchema'
@@ -72,7 +73,7 @@ const SignUp = () => {
     // Not sure if this is the right axios request
     const signUpSubmit = (e) => {
         e.preventDefault();
-        axios
+        axiosWithAuth()
             .post('/createnewuser',signUpForm)
                 .then(response => {
                     // window.localStorage.setItem('token', response.data.payload);

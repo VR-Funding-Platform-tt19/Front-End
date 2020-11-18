@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react'
 import {useHistory, useParams} from 'react-router-dom'
-import {connect} from 'react-redux'
 import {axiosWithAuth} from '../Utils/axiosWithAuth'
 
 ///PROJECT QUESTIONS/////
@@ -25,7 +24,7 @@ const initialProjectValues = {
 
 const UpdateProject = () => {
     //SETTING INITIAL FORM STATE
-    const [projectValues, setProjectValues] = useState(initialProject)
+    const [projectValues, setProjectValues] = useState(initialProjectValues)
     const [userId, setUserId]= useState(0)
     const {id} = useParams()
 
@@ -100,7 +99,7 @@ const UpdateProject = () => {
                 type='text'
                 placeholder='Please describe your project'
                 defaultValue={projectValues.description}
-                onChange={handleprojectInput}
+                onChange={handleChange}
                 />
 
                 <label>Funding Goal: {' '}</label>
@@ -116,8 +115,6 @@ const UpdateProject = () => {
     )
 }
     
-const mapStateToProps = (state) =>{
-    return {}
-}
 
-export default connect(mapStateToProps, {})(UpdateProject)
+
+export default UpdateProject
