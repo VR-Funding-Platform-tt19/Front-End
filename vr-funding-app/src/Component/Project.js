@@ -3,17 +3,20 @@
 // You will have an 'Edit' and 'Delete' buttons with functionality
 
 import React, { useState, useEffect} from 'react'
+import styled from 'styled-components'
 
 
 
 import { axiosWithAuth } from '../Utils/axiosWithAuth'
 import { useHistory, useParams } from 'react-router-dom'
-
+import UpdateProject from './UpdateProject'
 
 
 const Project = (props) => {
 
     const [projectData, setProjectData] = useState('')
+
+
     
     const { id } = useParams()
     const history = useHistory()
@@ -64,8 +67,16 @@ const Project = (props) => {
             <h3>Project Author: {projectData.author}</h3>
             <h4>Project Funding Goal: {projectData.fundedamt}</h4>
             <h4>Project Description: {projectData.description}</h4>
-            <button onClick={()=> history.push(`/update-project/${projectData.projectid}`)}>Edit</button>
+            <button onClick={()=> history.push(`/update-project/${projectData.projectid}`)}>Edit</button> 
+            {/* <button onClick={setVisible(!visible)}>Edit</button> */}
             <button onClick={handleDeleteProject}>Delete</button>
+            {/* Notes: 
+                Option 1: Pass below props to </UpdateProject> without rendering component
+                Option 2: How to conditionaly render that component  */}
+            
+                <UpdateProject name={projectData.projectname} author={projectData.author} 
+                image={projectData.projectimage} description={projectData.description} amount={projectData.fundedamt}/>
+           
         </div>
     )
 }
