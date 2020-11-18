@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { useHistory } from 'react-router-dom';
 import {axiosWithAuth} from '../Utils/axiosWithAuth';
+import axios from 'axios'
 import * as yup from 'yup';
 import styled from 'styled-components';
 
@@ -14,7 +15,7 @@ const SignUpPage = styled.div`
   max-width: 100%;
 `;
 
-const FormWrapper = styled.div`
+const FormWrapper = styled.form`
   .textField {
     margin: 1rem;
   }
@@ -40,14 +41,12 @@ const FormWrapper = styled.div`
 const initSignUpForm = {
     username: '',
     password: '',
-    funder: false
 };
 
 // default error values
 const initSignUpErrors = {
     username: '',
-    password: '',
-    funder: '' 
+    password: '', 
 };
 
 // initial value of submit button 
@@ -92,10 +91,11 @@ const SignUp = () => {
     // Not sure if this is the right axios request
     const signUpSubmit = (e) => {
         e.preventDefault();
-        axiosWithAuth()
-            .post('/createnewuser',signUpForm)
+        console.log(signUpForm)
+        axios
+            .post('https://pedrocasuso-vr-funding-project.herokuapp.com/createnewuser',signUpForm)
                 .then(response => {
-                    // window.localStorage.setItem('token', response.data.payload);
+                    window.localStorage.setItem('token', response.data.payload);
                     alert('Successfully registered');
                     history.push('/sign-in')
                 })
@@ -156,6 +156,7 @@ const SignUp = () => {
             <div className='signUpButton'>
                 <button className='signInButton' disabled={disabled}>Sign Up</button>
             </div>
+            
         </FormWrapper>
     </SignUpPage>
     )
