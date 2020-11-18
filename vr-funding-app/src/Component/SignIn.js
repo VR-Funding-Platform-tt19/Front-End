@@ -14,10 +14,29 @@ import { signInFormSchema } from './FormSchemas/signInFormSchema';
 
 // ----- Form Styling ------
 const SignInPage = styled.div`
-`
+  padding: 3em 5em 5em 5em;
+  max-width: 100%;
+`;
 
 const FormWrapper = styled.form`
-`
+  .textField {
+    margin: 1rem;
+  }
+  label {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    text-align: right;
+  }
+  input {
+    margin-left: 10px;
+    flex: 0 0 200px;
+  }
+  .signInButton {
+    float: right;
+    margin-right: 10px;
+  }
+`;
 
 // ---- Initial State -------
 
@@ -109,8 +128,11 @@ const SignIn = (props) => {
     
     return (
         <SignInPage>
+            <h1 className="major">Sign In</h1>
             <FormWrapper onSubmit={ login }>
-                <h1>VR Funding</h1>
+            <div>{signInErrors.username}</div>
+            <div>{signInErrors.password}</div>
+            <div className='textField'>
                 <label>Username: 
                     <input
                         name='username'
@@ -120,7 +142,8 @@ const SignIn = (props) => {
                         placeholder='Enter your username'
                     />
                 </label>
-                <div>{signInErrors.username}</div>
+            </div>
+            <div className='textField'>                
                 <label>Password: 
                     <input
                         name='password'
@@ -130,7 +153,7 @@ const SignIn = (props) => {
                         placeholder='Enter your password'
                     />
                 </label>
-                <div>{signInErrors.password}</div>
+            </div>
                 <div className='forgotPassCard'>
                     {visible ? <ForgotPassword hideForgotPass={setVisible}/> : null}
                 </div>
