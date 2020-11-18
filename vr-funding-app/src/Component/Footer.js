@@ -19,7 +19,7 @@ const FooterBar = styled.div`
     }
   }
   .inner {
-    padding: 5em 5em 3em 5em;
+    padding: 3em 5em 3em 5em;
     max-width: 100%;
     width: 75em;
   }
