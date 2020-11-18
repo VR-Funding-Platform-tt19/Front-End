@@ -17,21 +17,21 @@ import * as yup from 'yup'
 // This information needs to be passed to Project
 
 const initialState = 
-  {  
-        "projectname": "Test",
-        "description": "Test",
-        "author": "Test",
-        "projectimage": "Test",
-        "fundedamt": 100
+    {
+        projectname: "pedrotest",
+        description: "test1",
+        author: "test",
+        projectimage: "test",
+        fundedamt: 5
     }
 
 
 const initialProjectErrors = {
-    projectname:'',
-    description:'',
-    projecttype:'',
-    projectimage:'',
-    fundedamt:''
+    "projectname": "",
+    "description": "",
+    "author": "",
+    "projectimage": "",
+    "fundedamt": 100
 };
 
 const ProjectForm = () => {
@@ -70,19 +70,19 @@ const ProjectForm = () => {
     
     const onSubmit = (e) => {
         e.preventDefault()
-        console.log(addNewProject)
+        console.log(newProject)
         axiosWithAuth()
             .post('/projects/project',addNewProject)
                 .then((res) => {
                     console.log(res)
                     // What does the post return 
-                    // props.setProjectData(res.data)
+                    // setNewProject(res.data)
+                    history.push('/entrepreneurs/projects') // need to add routing information 
                 })
                 .catch((error)=> {
                     console.log(error.response)
                 })
         // onsubmit the user needs to be routed back to the dashboard?
-        history.push('') // need to add routing information 
     }
 
     return (
@@ -116,7 +116,7 @@ const ProjectForm = () => {
                 <label>Funding Goal:</label>
                 <input
                     name='fundedamt'
-                    type='text'
+                    type='number'
                     value={newProject.fundedamt}
                     onChange={handleChange}
                 />

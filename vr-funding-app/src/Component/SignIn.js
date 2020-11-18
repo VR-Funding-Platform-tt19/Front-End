@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react';
 import * as yup from 'yup';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
-import { axiosWithAuth } from '../Utils/axiosWithAuth'
+
 import axios from 'axios'
 
 // ------- components -----------

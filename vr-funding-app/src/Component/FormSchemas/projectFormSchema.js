@@ -12,7 +12,7 @@ export const projectFormSchema = yup.object().shape({
         .required('Please enter an Author name.'),
     description: yup
         .string()
-        .min(100, 'Please give us more information about your project')
+        .min(10, 'Please give us more information about your project')
         .max(400, 'Your description can not exceed 400 characters')
         .required('Please describe your fundraising project.'),
     fundedamt: yup
