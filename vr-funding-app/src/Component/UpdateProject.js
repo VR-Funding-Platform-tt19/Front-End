@@ -25,51 +25,54 @@ const initialProjectValues = {
 const UpdateProject = () => {
     //SETTING INITIAL FORM STATE
     const [projectValues, setProjectValues] = useState(initialProjectValues)
-    const [userId, setUserId]= useState(0)
+    // const [userId, setUserId]= useState(0)
     const {id} = useParams()
+
+    console.log(id)
+    console.log(projectValues)
 
     //USE EFFECT AXIOSWITHAUTH()CALL FOR ID
     useEffect(()=>{
-        if(id){
+            
             axiosWithAuth()
-            .get(`projectURL/getproject/${id}`)
-            .then(response=>{
-                setProjectValues(response.data)
+            .get(`/entrepreneurs/projects`)
+            .then(res=>{
+                console.log(res.data)
+                const project = res.data.find((proj)=> proj.projectid == id)
+                setProjectValues(project)
             })
             .catch(error=>{
                 console.log('THIS IS YOUR ERROR----->', error)
-            })
-        }
-    },[id])
+            })  
+    },[])
 
-    const updateForm = (name, value) =>{
-        setProjectValues({
-            ...projectValues,
-            [name]: value
-        })
-    }
 
     //HELPER FUNCTIONS
     const history = useHistory()
 
+    console.log(projectValues)
     //EVENT HANDLERS
     const handleChange = (event) =>{
-        const {name, value} = event.target
-        updateForm(name, value)
+       
+        setProjectValues({
+            ...projectValues,
+            [event.target.name]: event.target.value
+        })
     }
 
     const handleSubmit = (event) =>{
+        console.log(projectValues)
         event.preventDefault()
-        if(id){
-            axiosWithAuth()
-            .put(`projectURL/getproject/${id}`, projectValues)
-            .then(response=>{
-                history.push(`/projectDashboard/project/${id}`)
+        axiosWithAuth()
+            .put(`projects/post/16`, projectValues)
+                .then(res=>{
+                    console.log(res.data)
+                    history.push('/dashboard')
+                })
+                .catch(error=>{
+                    console.log('THIS IS YOUR ERROR-------->', error)
             })
-            .catch(error=>{
-                console.log('THIS IS YOUR ERROR-------->', error)
-            })
-        }
+        
     }
     return(
         <>
@@ -77,10 +80,10 @@ const UpdateProject = () => {
                 <h2 className='form-title'>Add A New Project</h2>
                 <label>Project Name {' '}</label>
                 <input
-                name='projectName'
+                name='projectname'
                 type='text'
                 placeholder='Please enter a project name'
-                defaultValue={projectValues.projectName}
+                defaultValue={projectValues.projectname}
                 onChange={handleChange}
                 />
 
@@ -104,12 +107,12 @@ const UpdateProject = () => {
 
                 <label>Funding Goal: {' '}</label>
                 <input
-                name='fundingGoal'
+                name='fundedamt'
                 placeholder='Funding Goal'
-                defaultValue={projectValues.fundingGoal}
+                defaultValue={projectValues.fundedamt}
                 onChange={handleChange}
                 />
-                <button onClick={handleSubmit}>Finish Editing</button>
+                <button>Finish Editing</button>
             </form>
         </> 
     )

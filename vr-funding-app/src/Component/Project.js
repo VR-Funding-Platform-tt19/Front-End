@@ -6,7 +6,6 @@ import React, { useState, useEffect} from 'react'
 
 
 
-import axios from 'axios'
 import { axiosWithAuth } from '../Utils/axiosWithAuth'
 import { useHistory, useParams } from 'react-router-dom'
 
@@ -19,17 +18,29 @@ const Project = (props) => {
     const { id } = useParams()
     const history = useHistory()
 
+    // console.log(projectData)
+    // const projects = projectData    
+    // console.log(projects)
+    // console.log(id)
+    // const idA = id
+    // console.log(idA)
+    
+    // const projectA = projects.find((proj)=> proj.projectid == id )
+    // console.log(projectA)
 
+    console.log(projectData)
     useEffect(() => {
         axiosWithAuth()
-            .get(`/entrepreneur/projects${id}`)
+            .get('/entrepreneurs/projects')
                 .then((res)=> {
-                    setProjectData(res.data)
+                    console.log(res.data)
+                    const project = res.data.find((proj)=> proj.projectid == id)
+                    setProjectData(project)
                 })
                 .catch((error)=> {
                     console.log(error)
                 })
-    })
+    },[])
 
     const handleDeleteProject = (e) => {
         e.preventDefault()
@@ -48,11 +59,11 @@ const Project = (props) => {
     return (
         <div>
             <h1> We are in Project.js</h1>
-            <h2>Project Name: {projectData.projectName}</h2>
+            <h2>Project Name: {projectData.projectname}</h2>
             <h3>Project Author: {projectData.author}</h3>
-            <h4>Project Funding Goal: {projectData.fundingGoal}</h4>
+            <h4>Project Funding Goal: {projectData.fundedamt}</h4>
             <h4>Project Description: {projectData.description}</h4>
-            <button onClick={()=> history.push('/update-project')}>Edit</button>
+            <button onClick={()=> history.push(`/update-project/${projectData.projectid}`)}>Edit</button>
             <button onClick={handleDeleteProject}>Delete</button>
         </div>
     )
