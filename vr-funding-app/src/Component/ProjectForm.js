@@ -8,6 +8,7 @@ import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { axiosWithAuth } from '../Utils/axiosWithAuth'
 
+
 import { projectFormSchema } from './FormSchemas/projectFormSchema'
 import * as yup from 'yup'
 
@@ -15,13 +16,15 @@ import * as yup from 'yup'
 // This is the form where a fundraiser can create their fundraising project.
 // This information needs to be passed to Project
 
-const initialState = {
-    projectname:'',
-    description:'',
-    projecttype:'',
-    projectimage:'',
-    fundedamt:''
-}
+const initialState = 
+  {  
+        "projectname": "Test",
+        "description": "Test",
+        "author": "Test",
+        "projectimage": "Test",
+        "fundedamt": 100
+    }
+
 
 const initialProjectErrors = {
     projectname:'',
@@ -63,18 +66,20 @@ const ProjectForm = () => {
             [e.target.name]:e.target.value
         })
     }
-
+    const addNewProject = newProject
+    
     const onSubmit = (e) => {
         e.preventDefault()
+        console.log(addNewProject)
         axiosWithAuth()
-            .post('/projects/project', newProject)
+            .post('/projects/project',addNewProject)
                 .then((res) => {
                     console.log(res)
                     // What does the post return 
                     // props.setProjectData(res.data)
                 })
                 .catch((error)=> {
-                    console.log(error)
+                    console.log(error.response)
                 })
         // onsubmit the user needs to be routed back to the dashboard?
         history.push('') // need to add routing information 
@@ -94,9 +99,9 @@ const ProjectForm = () => {
 
                 <label> Author:</label>
                 <input
-                    name='projecttype'
+                    name='author'
                     type='text'
-                    value={newProject.projecttype}
+                    value={newProject.author}
                     onChange={handleChange}
                 />
 

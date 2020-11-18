@@ -6,7 +6,7 @@ export const projectFormSchema = yup.object().shape({
         .min(5, 'Title must be more than 5 characters')
         .max(40, 'Title cant be more than 40 characters')
         .required('Please enter a tile for your project.'),
-    projecttype: yup
+    author: yup
         .string()
         .min(3, 'Password must be at least 3 characters')
         .required('Please enter an Author name.'),

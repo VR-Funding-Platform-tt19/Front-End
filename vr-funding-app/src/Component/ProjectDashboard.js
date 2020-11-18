@@ -28,7 +28,7 @@ const ProjectDashboard = (props) => {
 
     // we need to add setProjectData to the global props store
     const [ projectData, setProjectData ]= useState([])
-
+    console.log(projectData)
     const history = useHistory()
 
     // This will pull down all the projects
@@ -43,7 +43,7 @@ const ProjectDashboard = (props) => {
                     console.log(error)
                 })
         
-    })
+    },[])
 
     return (
         <div>

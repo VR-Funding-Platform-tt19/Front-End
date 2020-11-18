@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from 'react';
-import axios from 'axios';
+
 import * as yup from 'yup';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 import { axiosWithAuth } from '../Utils/axiosWithAuth'
+import axios from 'axios'
 
 // ------- components -----------
 import ForgotPassword from '../Component/ForgotPassword'
@@ -80,8 +81,8 @@ const SignIn = (props) => {
     // Not sure if this is the right axios request?
     const login = (event) => {
         event.preventDefault();
-        axiosWithAuth()
-            .post('/login', `grant_type=password&username=${credentials.username}&password=${credentials.password}`, {
+        axios
+            .post('https://pedrocasuso-vr-funding-project.herokuapp.com/login', `grant_type=password&username=${credentials.username}&password=${credentials.password}`, {
                 headers: {
                   // btoa is converting our client id/client secret into base64
                   Authorization: `Basic ${btoa('lambda-client:lambda-secret')}`,
