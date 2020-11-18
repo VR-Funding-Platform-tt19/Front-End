@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import {axiosWithAuth} from '../Utils/axiosWithAuth';
 import * as yup from 'yup';
 import styled from 'styled-components';
+import axios from 'axios'
 
 
 // ----- Form Schema ------
@@ -14,7 +15,7 @@ const SignUpPage = styled.div`
   max-width: 100%;
 `;
 
-const FormWrapper = styled.div`
+const FormWrapper = styled.form`
   .textField {
     margin: 1rem;
   }
@@ -92,10 +93,11 @@ const SignUp = () => {
     // Not sure if this is the right axios request
     const signUpSubmit = (e) => {
         e.preventDefault();
-        axiosWithAuth()
-            .post('/createnewuser',signUpForm)
+        console.log(e)
+        axios
+            .post('https://pedrocasuso-vr-funding-project.herokuapp.com/createnewuser',signUpForm)
                 .then(response => {
-                    // window.localStorage.setItem('token', response.data.payload);
+                    window.localStorage.setItem('token', response.data.payload);
                     alert('Successfully registered');
                     history.push('/sign-in')
                 })
