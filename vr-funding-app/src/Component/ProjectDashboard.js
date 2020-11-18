@@ -47,7 +47,7 @@ const ProjectDashboard = (props) => {
 
     return (
         <div>
-            <h1>We are in ProjectDashboard</h1>
+            <h1>Welcome...</h1>
             {/* <h1>Welcome Back {userName} </h1> */}
             <button onClick={() => history.push('/project-form')}>Create a New Project</button>
             <div>
