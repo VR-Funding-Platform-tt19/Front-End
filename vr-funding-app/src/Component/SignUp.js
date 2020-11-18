@@ -10,10 +10,29 @@ import { signUpFormSchema } from './FormSchemas/signUpFormSchema'
 
 // ----- Form Styling ------
 const SignUpPage = styled.div`
-`
+  padding: 3em 5em 5em 5em;
+  max-width: 100%;
+`;
 
-const FormWrapper = styled.form`
-`
+const FormWrapper = styled.div`
+  .textField {
+    margin: 1rem;
+  }
+  label {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    text-align: right;
+  }
+  input {
+    margin-left: 10px;
+    flex: 0 0 200px;
+  }
+  .signUpButton {
+    float: right;
+    margin-right: 10px;
+  }
+`;
 
 // ------ initial state --------
 
@@ -97,9 +116,12 @@ const SignUp = () => {
 
 
     return (
-        <SignUpPage>
-            <FormWrapper onSubmit={signUpSubmit}>
-                <h1>VR Funding</h1>
+    <SignUpPage>
+        <h1 className="major">Sign Up</h1>
+        <FormWrapper onSubmit={signUpSubmit}>
+            <div>{signUpErrors.username}</div>
+            <div>{signUpErrors.password}</div>
+            <div className='textField'>
                 <label>Username: 
                     <input
                         name='username'
@@ -109,7 +131,8 @@ const SignUp = () => {
                         placeholder='Enter your username'
                     />
                 </label>
-                <div>{signUpErrors.username}</div>
+            </div>
+            <div className='textField'>
                 <label>Password: 
                     <input
                         name='password'
@@ -119,7 +142,8 @@ const SignUp = () => {
                         placeholder='Enter your password'
                     />
                 </label>
-                <div>{signUpErrors.password}</div>
+            </div>
+            <div className='textField'>
                 <label>Funder account: 
                     <input
                         name='funder'
@@ -128,10 +152,12 @@ const SignUp = () => {
                         onChange={inputChange}
                     />
                 </label>
+            </div>
+            <div className='signUpButton'>
                 <button className='signInButton' disabled={disabled}>Sign Up</button>
-            </FormWrapper>
-           
-        </SignUpPage>
+            </div>
+        </FormWrapper>
+    </SignUpPage>
     )
 }
 
