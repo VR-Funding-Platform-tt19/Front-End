@@ -13,12 +13,13 @@ const ProjectCard = (props) => {
     const { project } = props
     const history = useHistory()
     
+    console.log(project.projectid)
 
     
     return (
         <div>
             <h1>We are in Project Card</h1>
-            <div onClick={()=> history.push(`/project/${project.id}`)}>
+            <div onClick={()=> history.push(`/project/${project.projectid}`)}>
                 <h2>Project Name: {project.projectname}</h2>
                 <h3>Project Author: {project.author}</h3>
                 <h4>Project Funding Goal: {project.fundedamt}</h4>
