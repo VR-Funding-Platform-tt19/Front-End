@@ -19,7 +19,7 @@ const SignInPage = styled.div`
 `;
 
 const FormWrapper = styled.form`
-  .textField {
+  .inputField {
     margin: 1rem;
   }
   label {
@@ -32,9 +32,12 @@ const FormWrapper = styled.form`
     margin-left: 10px;
     flex: 0 0 200px;
   }
-  .signInButton {
+  button {
     float: right;
-    margin-right: 10px;
+    margin-left: 10px;
+  }
+  .error {
+      color: #b74e91;
   }
 `;
 
@@ -130,9 +133,11 @@ const SignIn = (props) => {
         <SignInPage>
             <h1 className="major">Sign In</h1>
             <FormWrapper onSubmit={ login }>
-            <div>{signInErrors.username}</div>
-            <div>{signInErrors.password}</div>
-            <div className='textField'>
+                <div className='inputField'>
+                    <label className='error'>{signInErrors.username}</label>
+                    <label className='error'>{signInErrors.password}</label>
+                </div>
+            <div className='inputField'>
                 <label>Username: 
                     <input
                         name='username'
@@ -143,7 +148,7 @@ const SignIn = (props) => {
                     />
                 </label>
             </div>
-            <div className='textField'>                
+            <div className='inputField'>                
                 <label>Password: 
                     <input
                         name='password'
@@ -157,7 +162,7 @@ const SignIn = (props) => {
                 <div className='forgotPassCard'>
                     {visible ? <ForgotPassword hideForgotPass={setVisible}/> : null}
                 </div>
-                <div className='signInButton'>
+                <div className='inputField'>
                     <button className='signInButton' disabled={disabled}>Sign In</button>
                     <button className='forgotPassButton' onClick={() => visible === true ? setVisible(false) : setVisible(true)}>Forgot Password</button>
                 </div>
