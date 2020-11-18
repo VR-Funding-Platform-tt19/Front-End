@@ -41,14 +41,12 @@ const FormWrapper = styled.form`
 const initSignUpForm = {
     username: '',
     password: '',
-    funder: false
 };
 
 // default error values
 const initSignUpErrors = {
     username: '',
-    password: '',
-    funder: '' 
+    password: '', 
 };
 
 // initial value of submit button 
@@ -93,7 +91,7 @@ const SignUp = () => {
     // Not sure if this is the right axios request
     const signUpSubmit = (e) => {
         e.preventDefault();
-        console.log(e)
+        console.log(signUpForm)
         axios
             .post('https://pedrocasuso-vr-funding-project.herokuapp.com/createnewuser',signUpForm)
                 .then(response => {
@@ -158,6 +156,7 @@ const SignUp = () => {
             <div className='signUpButton'>
                 <button className='signInButton' disabled={disabled}>Sign Up</button>
             </div>
+            
         </FormWrapper>
     </SignUpPage>
     )
