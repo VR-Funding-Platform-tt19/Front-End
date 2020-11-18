@@ -26,9 +26,9 @@ function App() {
       <Switch>
         {/* These are the main routes */}
         <Route exact path='/sign-in' component={SignIn}/>
-        <PrivateRoute exact path='/dashboard' component={ProjectDashboard}/>
+        <Route exact path='/dashboard' component={ProjectDashboard}/>
         <Route exact path='/project/:id' component={Project}/>
-        <Route exact path='/signUp' component={SignUp}/> {/* So we will need to add a link to this some where */}
+        <Route exact path='/sign-up' component={SignUp}/> {/* So we will need to add a link to this some where */}
         <Route exact path='/update-project' component={UpdateProject}/>
         <Route exact path='/project-form' component={ProjectForm}/>
 

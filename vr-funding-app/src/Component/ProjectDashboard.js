@@ -36,14 +36,14 @@ const ProjectDashboard = (props) => {
         axiosWithAuth()
             .get('/entrepreneurs/projects')
                 .then((res)=> {
-                    // console.log(res)
+                    console.log(res.data)
                     setProjectData(res.data)
                 })
                 .catch((error)=>{
                     console.log(error)
                 })
         
-    })
+    },[])
 
     return (
         <div>

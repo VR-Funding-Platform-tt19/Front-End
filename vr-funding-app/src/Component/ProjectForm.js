@@ -15,20 +15,23 @@ import * as yup from 'yup'
 // This is the form where a fundraiser can create their fundraising project.
 // This information needs to be passed to Project
 
-const initialState = {
-    projectname:'',
-    description:'',
-    projecttype:'',
-    projectimage:'',
-    fundedamt:''
-}
+const initialState = 
+    {
+        
+        projectname: "pedrotest",
+        description: "test1",
+        author: "test",
+        projectimage: "test",
+        fundedamt: 5
+    }
+
 
 const initialProjectErrors = {
-    projectname:'',
-    description:'',
-    projecttype:'',
-    projectimage:'',
-    fundedamt:''
+    "projectname": "",
+    "description": "",
+    "author": "",
+    "projectimage": "",
+    "fundedamt": 100
 };
 
 const ProjectForm = () => {
@@ -66,18 +69,19 @@ const ProjectForm = () => {
 
     const onSubmit = (e) => {
         e.preventDefault()
+        console.log(newProject)
         axiosWithAuth()
             .post('/projects/project', newProject)
                 .then((res) => {
                     console.log(res)
                     // What does the post return 
-                    // props.setProjectData(res.data)
+                    // setNewProject(res.data)
+                    history.push('/entrepreneurs/projects') // need to add routing information 
                 })
                 .catch((error)=> {
-                    console.log(error)
+                    console.log(error.response)
                 })
         // onsubmit the user needs to be routed back to the dashboard?
-        history.push('') // need to add routing information 
     }
 
     return (
@@ -94,9 +98,9 @@ const ProjectForm = () => {
 
                 <label> Author:</label>
                 <input
-                    name='projecttype'
+                    name='author'
                     type='text'
-                    value={newProject.projecttype}
+                    value={newProject.author}
                     onChange={handleChange}
                 />
 
@@ -111,7 +115,7 @@ const ProjectForm = () => {
                 <label>Funding Goal:</label>
                 <input
                     name='fundedamt'
-                    type='text'
+                    type='number'
                     value={newProject.fundedamt}
                     onChange={handleChange}
                 />

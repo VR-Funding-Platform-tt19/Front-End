@@ -4,10 +4,10 @@ import axios from 'axios'
 export const axiosWithAuth = () =>{
     const token = localStorage.getItem('token')
     return axios.create({
-        header:{
-            authorization:token
+        headers:{
+            Authorization: `Bearer ${token}`
         },
         //fill out baseURL for auth
-        baseURL: 'http://pedrocasuso-vr-funding-project.herokuapp.com'
+        baseURL: 'https://pedrocasuso-vr-funding-project.herokuapp.com'
     })
 }

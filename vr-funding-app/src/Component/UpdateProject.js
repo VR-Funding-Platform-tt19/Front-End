@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react'
 import {useHistory, useParams} from 'react-router-dom'
-import {connect} from 'react-redux'
 import {axiosWithAuth} from '../Utils/axiosWithAuth'
 
 ///PROJECT QUESTIONS/////
@@ -116,8 +115,6 @@ const UpdateProject = () => {
     )
 }
     
-const mapStateToProps = (state) =>{
-    return {}
-}
 
-export default connect(mapStateToProps, {})(UpdateProject)
+
+export default UpdateProject
