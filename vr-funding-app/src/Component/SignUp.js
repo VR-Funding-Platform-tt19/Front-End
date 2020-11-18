@@ -118,7 +118,7 @@ const SignUp = () => {
     return (
     <SignUpPage>
         <h1 className="major">Sign Up</h1>
-        <FormWrapper>
+        <FormWrapper onSubmit={signUpSubmit}>
             <div>{signUpErrors.username}</div>
             <div>{signUpErrors.password}</div>
             <div className='textField'>
