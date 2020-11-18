@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './app.css'
+// import './app.css'
 
 import { Switch, Route } from 'react-router-dom'
 
