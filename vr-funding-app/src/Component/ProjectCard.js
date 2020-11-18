@@ -19,9 +19,9 @@ const ProjectCard = (props) => {
         <div>
             <h1>We are in Project Card</h1>
             <div onClick={()=> history.push(`/project/${project.id}`)}>
-                <h2>Project Name: {project.projectName}</h2>
+                <h2>Project Name: {project.projectname}</h2>
                 <h3>Project Author: {project.author}</h3>
-                <h4>Project Funding Goal: {project.fundingGoal}</h4>
+                <h4>Project Funding Goal: {project.fundedamt}</h4>
                 <h4>Project Description: {project.description}</h4>
             </div>   
         </div>

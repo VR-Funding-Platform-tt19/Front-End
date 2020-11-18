@@ -15,15 +15,16 @@ import * as yup from 'yup'
 // This is the form where a fundraiser can create their fundraising project.
 // This information needs to be passed to Project
 
-const initialState = {
-    "user": {},
-    "projectid": 0,
-    "projectname": "",
-    "description": "",
-    "author": "",
-    "projectimage": "test image",
-    "fundedamt": 100
-}
+const initialState = 
+    {
+        
+        projectname: "pedrotest",
+        description: "test1",
+        author: "test",
+        projectimage: "test",
+        fundedamt: 5
+    }
+
 
 const initialProjectErrors = {
     "projectname": "",
@@ -74,11 +75,11 @@ const ProjectForm = () => {
                 .then((res) => {
                     console.log(res)
                     // What does the post return 
-                    setNewProject(res.data)
+                    // setNewProject(res.data)
                     history.push('/entrepreneurs/projects') // need to add routing information 
                 })
                 .catch((error)=> {
-                    console.log(error)
+                    console.log(error.response)
                 })
         // onsubmit the user needs to be routed back to the dashboard?
     }
