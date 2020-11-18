@@ -39,7 +39,8 @@ const NavBar = styled.div`
 
     .title {
         border: 0;
-        color: #ffffff;
+        color: rgba(255, 255, 255, 0.75);
+        text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
         display: block;
         font-size: 1.25em;
         font-weight: bold;
