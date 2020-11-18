@@ -76,8 +76,8 @@ const ProjectForm = () => {
                 .then((res) => {
                     console.log(res)
                     // What does the post return 
-                    // setNewProject(res.data)
-                    history.push('/entrepreneurs/projects') // need to add routing information 
+                    setNewProject(res.data)
+                    history.push('/dashboard') // need to add routing information 
                 })
                 .catch((error)=> {
                     console.log(error.response)
