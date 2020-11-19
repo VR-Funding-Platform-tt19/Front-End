@@ -1,5 +1,5 @@
 import React from 'react';
-import '../App.css';
+import '../app.css';
 import styled from 'styled-components';
 import { Link, useHistory } from 'react-router-dom';
 
