@@ -168,6 +168,7 @@ const SignIn = (props) => {
                     <button className='signInButton' disabled={disabled}>Sign In</button>
                     <button className='forgotPassButton' onClick={() => visible === true ? setVisible(false) : setVisible(true)}>Forgot Password</button>
                 </div>
+                
                 {visible ? <ForgotPassword hideForgotPass={setVisible}/> : null}
             </FormWrapper>
         </SignInPage>
