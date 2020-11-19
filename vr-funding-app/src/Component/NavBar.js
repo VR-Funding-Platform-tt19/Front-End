@@ -97,9 +97,9 @@ const NavBar = () => {
             </a>
                 <nav>
                     <ul>
-                        <li><Link to='/'>Home</Link></li>
-                        <li><Link to='/about'>About Us</Link></li>
-                        <li><Link to='/team'>Meet The Team</Link></li>
+                        <li><Link to='/'>Home</Link></li> {/* Add link to marketing page index.html */}
+                        <li><Link to='/about'>About Us</Link></li> {/* add link to marketing about us page */}
+                        <li><Link to='/about-us'>Meet The Team</Link></li> 
                         <li><Link to='/dashboard'>Dashboard</Link></li>
                     </ul>
                 </nav>
