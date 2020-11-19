@@ -14,15 +14,15 @@ import {axiosWithAuth} from '../Utils/axiosWithAuth'
 //SETTING INITIAL VALUES
 
 const initialProjectValues = {
-    id:'',
-    projectName:'',
+    projectname:'',
     author:'',
     description:'',
-    fundingGoal:'',
+    fundedamt:'',
 }
 
 
-const UpdateProject = () => {
+const UpdateProject = (props) => {
+    const { name, image, author, description, amount} = props
     //SETTING INITIAL FORM STATE
     const [projectValues, setProjectValues] = useState(initialProjectValues)
     
@@ -40,13 +40,22 @@ const UpdateProject = () => {
                 console.log(res.data)
                 const project = res.data.find((proj)=> proj.projectid == id) // do not change to ===
                 setProjectValues(project)
+                console.log('This is original GET------------>', project)
             })
             .catch(error=>{
                 console.log('THIS IS YOUR ERROR----->', error)
             })  
     },[])
 
+    const testData = {
 
+        "projectname": name,
+        "author": author,
+        "description": description,
+        "projectimage": image,
+        "fundedamt": amount,
+    }
+console.log(testData)
     //HELPER FUNCTIONS
     const history = useHistory()
 
@@ -65,7 +74,7 @@ const UpdateProject = () => {
         console.log(projectValues)
         event.preventDefault()
         axiosWithAuth()
-            .put('projects/post/' + id, projectValues)
+            .put('projects/post/21', testData)
                 .then(res=>{
                     console.log(res.data)
                     history.push('/dashboard')
@@ -78,7 +87,7 @@ const UpdateProject = () => {
     return(
         <div>
             <form onSubmit={handleSubmit}>
-                <h2 className='form-title'>Add A New Project</h2>
+                <h2 className='form-title'>Edit Project</h2>
                 <label>Project Name: {' '}</label>
                 <input
                 name='projectname'
