@@ -109,6 +109,7 @@ const SignUp = () => {
                     history.push('/sign-in')
                 })
                 .catch(error => {
+                    alert('Username or Password is already in use') // alerts if 
                     console.log('There is an error', error);
                 });
 
