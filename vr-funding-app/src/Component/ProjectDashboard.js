@@ -61,12 +61,6 @@ const ProjectDashboard = (props) => {
     )
 }
 
-const mapStateToProps = (state) => {
-    return {
-        isLoading: state.isLoading,
-        projects: state.projectData,
-        error: state.error,
-    }
-}
 
-export default connect(mapStateToProps)(ProjectDashboard)
+
+export default ProjectDashboard
