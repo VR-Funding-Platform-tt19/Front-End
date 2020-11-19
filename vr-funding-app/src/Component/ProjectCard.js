@@ -14,6 +14,7 @@ const ProjectCard = (props) => {
     const history = useHistory()
     
     console.log(project.projectid)
+    console.log(project)
 
     
     return (

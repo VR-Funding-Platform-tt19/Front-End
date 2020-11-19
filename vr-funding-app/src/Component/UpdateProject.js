@@ -9,14 +9,12 @@ const initialProjectValues = {
     projectname:'',
     author:'',
     description:'',
-    projectimage: '',
-    fundedamt: 0,
+    fundedamt:0,
 }
 
 
-const UpdateProject = ({name, image, amount, desc, auth}) => {
-   
-
+const UpdateProject = (props) => {
+    // const { name, image, author, description, amount} = props
     //SETTING INITIAL FORM STATE
     const [projectValues, setProjectValues] = useState(initialProjectValues)
 
@@ -24,6 +22,31 @@ const UpdateProject = ({name, image, amount, desc, auth}) => {
     
     const {id} = useParams()
 
+    
+
+    //USE EFFECT AXIOSWITHAUTH()CALL FOR ID
+    useEffect(()=>{
+            
+            axiosWithAuth()
+            .get(`/entrepreneurs/projects`)
+            .then(res=>{
+                console.log(res.data)
+                const project = res.data.find((proj)=> proj.projectid == id) // do not change to ===
+                
+                console.log('This is original GET------------>', project)
+                console.log('This is original AMOUNT------------>', project.fundedamt)
+                setProjectValues({
+                "projectname": project.projectname,
+                "author": project.author,
+                "description": project.description,
+                "projectimage": project.projectimage,
+                "fundedamt": project.fundedamt})
+            })
+            .catch(error=>{
+                console.log('THIS IS YOUR ERROR----->', error)
+            })  
+    },[])
+    console.log(projectValues)
 
     //HELPER FUNCTIONS
     const history = useHistory()
@@ -36,13 +59,15 @@ const UpdateProject = ({name, image, amount, desc, auth}) => {
             ...projectValues,
             [event.target.name]: event.target.value
         })
+
     }
     
     const handleSubmit = (event) =>{
         console.log(projectValues)
+        console.log('FUNDED AMOUNT------->',projectValues.fundedamt)
         event.preventDefault()
         axiosWithAuth()
-            .put('projects/post/23', projectValues)
+            .put('projects/post/40', projectValues)
                 .then(res=>{
                     console.log(res.data)
                     history.push('/dashboard')
@@ -60,7 +85,7 @@ const UpdateProject = ({name, image, amount, desc, auth}) => {
                 <input
                 name='projectname'
                 type='text'
-                defaultValue={projectValues.projectname}
+                value={projectValues.projectname}
                 onChange={handleChange}
                 />
 
@@ -68,7 +93,7 @@ const UpdateProject = ({name, image, amount, desc, auth}) => {
                 <input
                 name='author'
                 type='text'
-                defaultValue={projectValues.author}
+                value={projectValues.author}
                 onChange={handleChange}
                 />
 
@@ -76,7 +101,7 @@ const UpdateProject = ({name, image, amount, desc, auth}) => {
                 <input
                 name='description'
                 type='text'
-                defaultValue={projectValues.description}
+                value={projectValues.description}
                 onChange={handleChange}
                 />
 
@@ -84,7 +109,7 @@ const UpdateProject = ({name, image, amount, desc, auth}) => {
                 <input
                 name='fundedamt'
                 type='number'
-                defaultValue={projectValues.fundedamt}
+                value={projectValues.fundedamt}
                 onChange={handleChange}
                 />
                 <button>Finish Editing</button>
