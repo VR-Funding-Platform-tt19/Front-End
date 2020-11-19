@@ -17,7 +17,7 @@ const NavBarStyle = styled.div`
     }
 
     @media (max-width: 480px) {
-        display: block;
+        display: flex;
         padding: 0 2em;
         text-align: left;
         .title {
@@ -27,7 +27,15 @@ const NavBarStyle = styled.div`
         nav {
             border-top: solid 1px rgba(255, 255, 255, 0.15);
             text-align: inherit;
+            
         }
+        // added by Corvo
+        nav ul {
+            display: flex;
+            flex-direction:column;
+        }
+        // End of added by Corvo
+        
         nav ul li {
             margin-left: 1.5em;
         }
@@ -90,15 +98,15 @@ const NavBar = () => {
             <a href="https://vigilant-bose-dd99fc.netlify.app/" className="title"> {/* Add link to marketing page index.html */}
                 SIXR VR Funding
             </a>
-                <nav>
-                    <ul>
-                        <li> <a href="https://vigilant-bose-dd99fc.netlify.app/"> Home</a> </li> 
-                        <li><Link to='/about'>About Us</Link></li> {/* add link to marketing about us page */}
-                        <li><Link to='/meet-the-team'>Meet The Team</Link></li> 
-                        <li><Link to='/dashboard'>Dashboard</Link></li>
-                        <li> <Link to='/sign-in' onClick={() => {window.localStorage.clear();}}> Logout </Link> </li> {/* possiblly have to style */}
-                    </ul>
-                </nav>
+            <nav>
+                <ul>
+                    <li> <a href="https://vigilant-bose-dd99fc.netlify.app/"> Home</a> </li> 
+                    <li><Link to='/about'>About Us</Link></li> {/* add link to marketing about us page */}
+                    <li><Link to='/meet-the-team'>Meet The Team</Link></li> 
+                    <li><Link to='/dashboard'>Dashboard</Link></li>
+                    <li> <Link to='/sign-in' onClick={() => {window.localStorage.clear();}}> Logout </Link> </li> {/* possiblly have to style */}
+                </ul>
+            </nav>
         </NavBarStyle>
         
     )
