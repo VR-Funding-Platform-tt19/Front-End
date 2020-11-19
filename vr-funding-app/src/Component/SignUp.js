@@ -172,6 +172,7 @@ const SignUp = () => {
                 <button className='signInButton' disabled={disabled}>Sign Up</button>
             </div>
         </FormWrapper>
+        <img src='https://images.unsplash.com/photo-1525540810550-5032f5d191b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60' alt='VR'/>
     </SignUpPage>
     )
 }
