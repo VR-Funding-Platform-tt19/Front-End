@@ -3,7 +3,7 @@ import '../App.css';
 import styled from 'styled-components';
 import { Link, useHistory } from 'react-router-dom';
 
-const NavBar = styled.div`
+const NavBarStyle = styled.div`
     display: -moz-flex;
     display: -webkit-flex;
     display: -ms-flex;
@@ -85,13 +85,13 @@ const NavBar = styled.div`
 const NavBar = () => {
     const history = useHistory();
 
-    const logout () => {
+    const logOut = () => {
         window.localStorage.clear();
         history.push('/login');
     }
 
     return (
-        <NavBar>
+        <NavBarStyle>
             <a href="index.html" class="title">
                 SIXR VR Funding
             </a>
@@ -103,7 +103,7 @@ const NavBar = () => {
                         <li><Link to='/dashboard'>Dashboard</Link></li>
                     </ul>
                 </nav>
-        </NavBar>
+        </NavBarStyle>
         
     )
 }
