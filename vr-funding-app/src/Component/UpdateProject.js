@@ -65,9 +65,10 @@ const UpdateProject = (props) => {
     const handleSubmit = (event) =>{
         console.log(projectValues)
         console.log('FUNDED AMOUNT------->',projectValues.fundedamt)
+        console.log('THIS IS THE ID', id)
         event.preventDefault()
         axiosWithAuth()
-            .put('projects/post/40', projectValues)
+            .put(`projects/post/${id}`, projectValues)
                 .then(res=>{
                     console.log(res.data)
                     history.push('/dashboard')

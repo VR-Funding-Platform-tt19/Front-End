@@ -13,10 +13,13 @@ import { signUpFormSchema } from './FormSchemas/signUpFormSchema'
 const SignUpPage = styled.div`
   padding: 3em 5em 5em 5em;
   max-width: 100%;
+  h1 {
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+  }
 `;
 
 const FormWrapper = styled.form`
-  .textField {
+  .inputField {
     margin: 1rem;
   }
   label {
@@ -25,13 +28,18 @@ const FormWrapper = styled.form`
     justify-content: flex-end;
     text-align: right;
   }
-  input {
+  .textBox {
     margin-left: 10px;
     flex: 0 0 200px;
   }
-  .signUpButton {
+  .checkBox {
+      margin-top: 8px;
+  }
+  button {
     float: right;
-    margin-right: 10px;
+  }
+  .error {
+      color: #b74e91;
   }
 `;
 
@@ -116,12 +124,14 @@ const SignUp = () => {
 
 
     return (
-    <SignUpPage>
+        <SignUpPage>
         <h1 className="major">Sign Up</h1>
         <FormWrapper onSubmit={signUpSubmit}>
-            <div>{signUpErrors.username}</div>
-            <div>{signUpErrors.password}</div>
-            <div className='textField'>
+            <div className='inputField'>
+                <label className='error'>{signUpErrors.username}</label>
+                <label className='error'>{signUpErrors.password}</label>
+            </div>
+            <div className='inputField'>
                 <label>Username: 
                     <input
                         name='username'
@@ -129,10 +139,11 @@ const SignUp = () => {
                         value={signUpForm.username}
                         onChange={inputChange}
                         placeholder='Enter your username'
+                        className='textBox'
                     />
                 </label>
             </div>
-            <div className='textField'>
+            <div className='inputField'>
                 <label>Password: 
                     <input
                         name='password'
@@ -140,23 +151,24 @@ const SignUp = () => {
                         value={signUpForm.password}
                         onChange={inputChange}
                         placeholder='Enter your password'
+                        className='textBox'
                     />
                 </label>
             </div>
-            <div className='textField'>
+            {/* <div className='inputField'>
                 <label>Funder account: 
                     <input
                         name='funder'
                         type='checkbox'
                         checked={signUpForm.funder}
                         onChange={inputChange}
+                        className='checkBox'
                     />
                 </label>
-            </div>
-            <div className='signUpButton'>
+            </div> */}
+            <div className='inputField'>
                 <button className='signInButton' disabled={disabled}>Sign Up</button>
             </div>
-            
         </FormWrapper>
     </SignUpPage>
     )
