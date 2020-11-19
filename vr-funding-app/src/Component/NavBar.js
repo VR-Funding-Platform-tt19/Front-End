@@ -16,24 +16,30 @@ const NavBarStyle = styled.div`
         padding: 1em 2em;
     }
 
-    @media (max-width: 480px) {
-        display: block;
+    @media (max-width: 625px) {
+        display: flex;
         padding: 0 2em;
         text-align: left;
         .title {
             font-size: 1.25em;
             padding: 1em 0;
+            text-align: center;
         }
-        nav {
-            border-top: solid 1px rgba(255, 255, 255, 0.15);
-            text-align: inherit;
+
+        nav ul {
+            display: flex;
+            flex-direction: column;
         }
-        nav ul li {
-            margin-left: 1.5em;
+        .logoContainer {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         nav ul li a {
             height: 6em;
             line-height: 6em;
+            vertical-align:middle;
+
         }
     }
 
@@ -87,9 +93,9 @@ const NavBar = () => {
 
     return (
         <NavBarStyle>
-            <a href="https://vigilant-bose-dd99fc.netlify.app/" className="title"> {/* Add link to marketing page index.html */}
-                SIXR VR Funding
-            </a>
+            <div className='logoContainer'>
+                <a href="https://vigilant-bose-dd99fc.netlify.app/" className="title">SIXR VR Funding</a>
+            </div>
                 <nav>
                     <ul>
                         <li> <a href="https://vigilant-bose-dd99fc.netlify.app/"> Home</a> </li> 
