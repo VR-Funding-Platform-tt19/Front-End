@@ -10,18 +10,19 @@ const ProjectCardItem = styled.div`
     margin: 2em;
     padding: 2rem;
     background-color: rgba(255, 255, 255, 0.25);
+	transition: box-shadow 0.2s ease;
 
     h2 {
-      text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+        text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
     }
 
     p {
-      margin: auto;
+        margin: auto;
     }
 
     img {
-      max-width: 100%;
-      max-height: 100%;
+        max-width: 100%;
+        max-height: 100%;
     }
     &:hover {
         box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2);

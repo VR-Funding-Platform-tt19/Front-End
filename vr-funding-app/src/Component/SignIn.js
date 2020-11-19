@@ -16,6 +16,9 @@ import { signInFormSchema } from './FormSchemas/signInFormSchema';
 const SignInPage = styled.div`
   padding: 3em 5em 5em 5em;
   max-width: 100%;
+  h1 {
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+  }
 `;
 
 const FormWrapper = styled.form`
@@ -159,13 +162,11 @@ const SignIn = (props) => {
                     />
                 </label>
             </div>
-                <div className='forgotPassCard'>
-                    {visible ? <ForgotPassword hideForgotPass={setVisible}/> : null}
-                </div>
                 <div className='inputField'>
                     <button className='signInButton' disabled={disabled}>Sign In</button>
                     <button className='forgotPassButton' onClick={() => visible === true ? setVisible(false) : setVisible(true)}>Forgot Password</button>
                 </div>
+                {visible ? <ForgotPassword hideForgotPass={setVisible}/> : null}
             </FormWrapper>
         </SignInPage>
     )

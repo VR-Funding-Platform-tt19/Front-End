@@ -13,6 +13,9 @@ import { signUpFormSchema } from './FormSchemas/signUpFormSchema'
 const SignUpPage = styled.div`
   padding: 3em 5em 5em 5em;
   max-width: 100%;
+  h1 {
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+  }
 `;
 
 const FormWrapper = styled.form`
