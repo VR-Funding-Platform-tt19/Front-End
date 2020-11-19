@@ -69,7 +69,8 @@ const FormWrapper = styled.div`
 
     .githubIcon {
       max-width: 90%;
-      max-height: 90%;      
+      max-height: 90%;
+      filter: drop-shadow( 1px 1px 1px rgba(0, 0, 0, .7));
     }
 
     .headshot {
