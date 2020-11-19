@@ -33,7 +33,7 @@ const DashboardPage = styled.div`
         flex-direction: column;
         justify-content: center;
         margin: auto;
-        padding: 2em;
+        padding: 2em 4em 2em 4em;
         width: 75%;
         background-color: #5052b5;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -90,7 +90,7 @@ const ProjectDashboard = (props) => {
             {/* <h1>Welcome Back {userName} </h1> */}
             <div className='newProject'>
                 <h2>Create a new project?</h2>
-                <p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris.</p>
+                <p>Bring your project to life. Get people as excited about your project as you are. Click below to get started.</p>
                 <button onClick={() => history.push('/project-form')}>New Project</button>
             </div>
             

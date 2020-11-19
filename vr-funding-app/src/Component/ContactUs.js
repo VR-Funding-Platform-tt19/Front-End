@@ -5,10 +5,41 @@ import * as yup from 'yup'
 import {useHistory} from 'react-router-dom'
 
 import axios from 'axios'
+import styled from 'styled-components';
 
 import { contactUsSchema } from './FormSchemas/contactUsSchema'
 
 
+// ----- Form Styling ------
+const ContactUsPage = styled.div`
+    padding: 3em 5em 5em 5em;
+    max-width: 100%;
+    h1 {
+        text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+    }
+`;
+
+const ContactCard = styled.form`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    padding: 2em 4em 2em 4em;
+    width: 80%;
+    background-color: #5052b5;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    button {
+        margin: 2em auto auto auto;
+    }
+    textarea {
+        font-family: Arial, Helvetica, sans-serif;
+        height: 10em;
+
+    }
+`;
+
+
+// ------ initial state --------
 const initialContactUsForm = {
     name: '',
     email: '',
@@ -103,38 +134,36 @@ const ContactUs = () => {
 
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <h1>Want to get in touch?</h1>
-                <label>Name: {' '}</label>
+        <ContactUsPage>
+            <h1 className="major">Want to get in touch?</h1>
+            <ContactCard onSubmit={handleSubmit}>
+                <label>Name:</label>
                 <input
-                name='name'
-                type='text'
-                placeholder='Please Enter Your Name'
-                value={contactUsForm.name}
-                onChange={handleChange}
+                    name='name'
+                    type='text'
+                    placeholder='Please Enter Your Name'
+                    value={contactUsForm.name}
+                    onChange={handleChange}
                 />
-
-                <label>Email: {' '}</label>
+                <label>Email:</label>
                 <input
-                name='email'
-                type='text'
-                value={contactUsForm.email}
-                placeholder='Please Enter Your Email'
-                onChange={handleChange}
+                    name='email'
+                    type='text'
+                    value={contactUsForm.email}
+                    placeholder='Please Enter Your Email'
+                    onChange={handleChange}
                 />
-
-                <label>Message: {' '}</label>
-                <input
-                name='message'
-                type='text'
-                value={contactUsForm.message}
-                placeholder='Please tell us your message'
-                onChange={handleChange}
+                <label>Message:</label>
+                <textarea
+                    name='message'
+                    type='text'
+                    value={contactUsForm.message}
+                    placeholder='Please tell us your message'
+                    onChange={handleChange}
                 />
-            </form>
-            <button className='sendButton' disabled={initialDisabled} onClick={()=> history.push('/contact-confirmation')}>Send</button>
-        </div>
+                <button className='sendButton' disabled={initialDisabled} onClick={()=> history.push('/contact-confirmation')}>Send</button>
+            </ContactCard>
+        </ContactUsPage>
     )
 }
 
