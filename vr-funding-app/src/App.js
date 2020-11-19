@@ -40,9 +40,9 @@ function App() {
         {/* additional routes */}
         <Route exact path='/contact' component={ContactUs}/>
         <Route excact path='/reset-password' component={ForgotPassword}/>
-        <Route exact path='/about-us' component={MeetTheTeam}/>
+        <Route exact path='/meet-the-team' component={MeetTheTeam}/>
       </Switch>
-      
+
       <Footer/>
     </div>
   );
