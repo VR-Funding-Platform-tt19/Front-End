@@ -46,7 +46,7 @@ const UpdateProject = (props) => {
                 console.log('THIS IS YOUR ERROR----->', error)
             })  
     },[])
-
+    console.log(projectValues)
     const testData = {
 
         "projectname": name,
@@ -74,7 +74,7 @@ console.log(testData)
         console.log(projectValues)
         event.preventDefault()
         axiosWithAuth()
-            .put('projects/post/21', testData)
+            .put('projects/post/34', testData)
                 .then(res=>{
                     console.log(res.data)
                     history.push('/dashboard')
