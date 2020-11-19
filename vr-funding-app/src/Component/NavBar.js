@@ -85,11 +85,6 @@ const NavBarStyle = styled.div`
 const NavBar = () => {
     const history = useHistory();
 
-    const logOut = () => {
-        window.localStorage.clear();
-        history.push('/sign-in');
-    }
-
     return (
         <NavBarStyle>
             <a href="https://vigilant-bose-dd99fc.netlify.app/" className="title"> {/* Add link to marketing page index.html */}
@@ -101,7 +96,7 @@ const NavBar = () => {
                         <li><Link to='/about'>About Us</Link></li> {/* add link to marketing about us page */}
                         <li><Link to='/meet-the-team'>Meet The Team</Link></li> 
                         <li><Link to='/dashboard'>Dashboard</Link></li>
-                        <li> <button onClick={() => logOut}> Logout </button> </li> {/* possiblly have to style */}
+                        <li> <Link to='/sign-in' onClick={() => {window.localStorage.clear();}}> Logout </Link> </li> {/* possiblly have to style */}
                     </ul>
                 </nav>
         </NavBarStyle>
