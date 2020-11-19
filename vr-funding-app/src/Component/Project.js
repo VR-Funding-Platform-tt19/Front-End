@@ -59,7 +59,7 @@ const Project = (props) => {
                     console.log(error)
                 })
     }
-
+console.log(projectData.projectname, projectData.author, projectData.projectimage, projectData.description, projectData.fundedamt )
     return (
         <div>
             <h1> We are in Project.js</h1>
@@ -74,8 +74,8 @@ const Project = (props) => {
                 Option 1: Pass below props to </UpdateProject> without rendering component
                 Option 2: How to conditionaly render that component  */}
             
-                <UpdateProject name={projectData.projectname} author={projectData.author} 
-                image={projectData.projectimage} description={projectData.description} amount={projectData.fundedamt}/>
+                <UpdateProject name={projectData.projectname} auth={projectData.author} 
+                image={projectData.projectimage} desc={projectData.description} amount={projectData.fundedamt}/>
            
         </div>
     )
