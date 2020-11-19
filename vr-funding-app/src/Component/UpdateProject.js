@@ -17,12 +17,12 @@ const initialProjectValues = {
     projectname:'',
     author:'',
     description:'',
-    fundedamt:'',
+    fundedamt:0,
 }
 
 
 const UpdateProject = (props) => {
-    const { name, image, author, description, amount} = props
+    // const { name, image, author, description, amount} = props
     //SETTING INITIAL FORM STATE
     const [projectValues, setProjectValues] = useState(initialProjectValues)
     
@@ -39,23 +39,22 @@ const UpdateProject = (props) => {
             .then(res=>{
                 console.log(res.data)
                 const project = res.data.find((proj)=> proj.projectid == id) // do not change to ===
-                setProjectValues(project)
+                
                 console.log('This is original GET------------>', project)
+                console.log('This is original AMOUNT------------>', project.fundedamt)
+                setProjectValues({
+                "projectname": project.projectname,
+                "author": project.author,
+                "description": project.description,
+                "projectimage": project.projectimage,
+                "fundedamt": project.fundedamt})
             })
             .catch(error=>{
                 console.log('THIS IS YOUR ERROR----->', error)
             })  
     },[])
+    console.log(projectValues)
 
-    const testData = {
-
-        "projectname": name,
-        "author": author,
-        "description": description,
-        "projectimage": image,
-        "fundedamt": amount,
-    }
-console.log(testData)
     //HELPER FUNCTIONS
     const history = useHistory()
 
@@ -67,14 +66,16 @@ console.log(testData)
             ...projectValues,
             [event.target.name]: event.target.value
         })
+
     }
     console.log(id)
     // put endpoint not working
     const handleSubmit = (event) =>{
         console.log(projectValues)
+        console.log('FUNDED AMOUNT------->',projectValues.fundedamt)
         event.preventDefault()
         axiosWithAuth()
-            .put('projects/post/21', testData)
+            .put('projects/post/40', projectValues)
                 .then(res=>{
                     console.log(res.data)
                     history.push('/dashboard')
@@ -92,7 +93,7 @@ console.log(testData)
                 <input
                 name='projectname'
                 type='text'
-                defaultValue={projectValues.projectname}
+                value={projectValues.projectname}
                 onChange={handleChange}
                 />
 
@@ -100,7 +101,7 @@ console.log(testData)
                 <input
                 name='author'
                 type='text'
-                defaultValue={projectValues.author}
+                value={projectValues.author}
                 onChange={handleChange}
                 />
 
@@ -108,7 +109,7 @@ console.log(testData)
                 <input
                 name='description'
                 type='text'
-                defaultValue={projectValues.description}
+                value={projectValues.description}
                 onChange={handleChange}
                 />
 
@@ -116,7 +117,7 @@ console.log(testData)
                 <input
                 name='fundedamt'
                 type='number'
-                defaultValue={projectValues.fundedamt}
+                value={projectValues.fundedamt}
                 onChange={handleChange}
                 />
                 <button>Finish Editing</button>

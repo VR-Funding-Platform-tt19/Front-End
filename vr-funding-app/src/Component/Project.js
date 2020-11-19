@@ -13,9 +13,12 @@ import UpdateProject from './UpdateProject'
 
 
 const Project = (props) => {
+    const [hidden, setHidden] = useState(true)
+    
+    const onShowEdit = () => setHidden(false)
 
     const [projectData, setProjectData] = useState('')
-
+    
 
     
     const { id } = useParams()
@@ -67,15 +70,17 @@ const Project = (props) => {
             <h3>Project Author: {projectData.author}</h3>
             <h4>Project Funding Goal: {projectData.fundedamt}</h4>
             <h4>Project Description: {projectData.description}</h4>
-            <button onClick={()=> history.push(`/update-project/${projectData.projectid}`)}>Edit</button> 
+            <button 
+            onClick={()=> history.push(`/update-project/${projectData.projectid}`) && onShowEdit()}>Edit</button> 
             {/* <button onClick={setVisible(!visible)}>Edit</button> */}
             <button onClick={handleDeleteProject}>Delete</button>
             {/* Notes: 
-                Option 1: Pass below props to </UpdateProject> without rendering component
                 Option 2: How to conditionaly render that component  */}
-            
-                <UpdateProject name={projectData.projectname} author={projectData.author} 
-                image={projectData.projectimage} description={projectData.description} amount={projectData.fundedamt}/>
+
+                <div className='hidden'>
+                {hidden ? null : <UpdateProject name={projectData.projectname} author={projectData.author} 
+                image={projectData.projectimage} description={projectData.description} amount={projectData.fundedamt}/>}
+                </div>
            
         </div>
     )
