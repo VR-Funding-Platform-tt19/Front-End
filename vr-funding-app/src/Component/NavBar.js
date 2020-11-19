@@ -87,7 +87,7 @@ const NavBar = () => {
 
     const logOut = () => {
         window.localStorage.clear();
-        history.push('/login');
+        history.push('/sign-in');
     }
 
     return (
