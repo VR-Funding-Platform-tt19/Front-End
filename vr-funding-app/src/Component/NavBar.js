@@ -92,7 +92,7 @@ const NavBar = () => {
 
     return (
         <NavBarStyle>
-            <a href="index.html" class="title">
+            <a href="index.html" class="title"> {/* Add link to marketing page index.html */}
                 SIXR VR Funding
             </a>
                 <nav>
@@ -101,6 +101,7 @@ const NavBar = () => {
                         <li><Link to='/about'>About Us</Link></li> {/* add link to marketing about us page */}
                         <li><Link to='/meet-the-team'>Meet The Team</Link></li> 
                         <li><Link to='/dashboard'>Dashboard</Link></li>
+                        <li> <button onClick={() => logOut}> Logout </button> </li> {/* possiblly have to style */}
                     </ul>
                 </nav>
         </NavBarStyle>
