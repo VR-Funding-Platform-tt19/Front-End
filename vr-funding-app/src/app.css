@@ -100,7 +100,7 @@ mark {
 
 /* Type */
 
-	body, select, textarea {
+	body, select {
 		color: rgba(255, 255, 255, 0.55);
 		font-family: Arial, Helvetica, sans-serif;
 		font-size: 16.5pt;
@@ -110,7 +110,7 @@ mark {
 
 		@media screen and (max-width: 1680px) {
 
-			body, select, textarea {
+			body, select {
 				font-size: 13pt;
 			}
 
@@ -118,7 +118,7 @@ mark {
 
 		@media screen and (max-width: 1280px) {
 
-			body, select, textarea {
+			body, select {
 				font-size: 12pt;
 			}
 
@@ -126,7 +126,7 @@ mark {
 
 		@media screen and (max-width: 360px) {
 
-			body, select, textarea {
+			body, select {
 				font-size: 11pt;
 			}
 
