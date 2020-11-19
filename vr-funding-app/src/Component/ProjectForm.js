@@ -7,6 +7,7 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { axiosWithAuth } from '../Utils/axiosWithAuth'
+import styled from "styled-components";
 
 
 import { projectFormSchema } from './FormSchemas/projectFormSchema'
@@ -15,6 +16,35 @@ import * as yup from 'yup'
 // Notes:
 // This is the form where a fundraiser can create their fundraising project.
 // This information needs to be passed to Project
+
+
+const ProjectPage = styled.div`
+  padding: 3em 5em 5em 5em;
+  max-width: 100%;
+  h1 {
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+  }
+`;
+
+const ProjectFormCard= styled.form`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    padding: 2em 4em 2em 4em;
+    width: 80%;
+    background-color: #5052b5;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    button {
+        margin: 2em auto auto auto;
+    }
+    textarea {
+        font-family: Arial, Helvetica, sans-serif;
+        height: 10em;
+
+    }
+`;
+
 
 const initialState = 
     {
@@ -86,9 +116,9 @@ const ProjectForm = () => {
     }
 
     return (
-        <div>
-            <h1> We are in ProjectForm</h1>
-            <form onSubmit={onSubmit}>
+        <ProjectPage>
+            <h1 className="major">Create A Project</h1>
+            <ProjectFormCard onSubmit={onSubmit}>
                 <label>Project Name:</label>
                 <input
                     name='projectname'
@@ -105,14 +135,6 @@ const ProjectForm = () => {
                     onChange={handleChange}
                 />
 
-                <label>Description:</label>
-                <input
-                    name='description'
-                    type='text'
-                    value={newProject.description}
-                    onChange={handleChange}
-                />
-
                 <label>Funding Goal:</label>
                 <input
                     name='fundedamt'
@@ -120,9 +142,18 @@ const ProjectForm = () => {
                     value={newProject.fundedamt}
                     onChange={handleChange}
                 />
+
+                <label>Description:</label>
+                <textarea
+                    name='description'
+                    type='text'
+                    value={newProject.description}
+                    onChange={handleChange}
+                />
+
                 <button>Submit</button>
-            </form>
-        </div>
+            </ProjectFormCard>
+        </ProjectPage>
     )
 }
 

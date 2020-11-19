@@ -7,28 +7,28 @@ const sprintTeam = [
     photo: "https://cmirza-images.s3-us-west-2.amazonaws.com/vr_head.png",
     unit: 4,
     info: "Some text that describes me lorem ipsum ipsum lorem.",
-    contact: "example@example.com"
+    github: "https://github.com/GoldenPedro"
   },
   {
     name: "Kayode Richards",
     photo: "https://cmirza-images.s3-us-west-2.amazonaws.com/vr_head.png",
     unit: 3,
     info: "Some text that describes me lorem ipsum ipsum lorem.",
-    contact: "example@example.com"
+    github: "https://github.com/kayode94"
   },
   {
     name: "Christopher Corvo",
     photo: "https://cmirza-images.s3-us-west-2.amazonaws.com/vr_head.png",
-    unit: 4,
+    unit: 3,
     info: "Some text that describes me lorem ipsum ipsum lorem.",
-    contact: "example@example.com"
+    github: "https://github.com/ChristopherCorvo"
   },
   {
     name: "Cameron Mirza",
     photo: "https://cmirza-images.s3-us-west-2.amazonaws.com/vr_head.png",
-    unit: 4,
+    unit: 2,
     info: "Some text that describes me lorem ipsum ipsum lorem.",
-    contact: "example@example.com"
+    github: "https://github.com/cmirza"
   }
 ];
 
@@ -81,7 +81,7 @@ const MeetTheTeam = () => {
             <h2>{member.name}</h2>
             <p class="unit">Unit {member.unit}</p>
             <p>{member.info}</p>
-            <a href={member.contact}>{member.contact}</a>
+            <a href={member.github}>GitHub Repo</a>
             </div>
           </div>
           );

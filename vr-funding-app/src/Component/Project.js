@@ -12,6 +12,46 @@ import { useHistory, useParams } from 'react-router-dom'
 import UpdateProject from './UpdateProject'
 
 
+const ProjectPage = styled.div`
+  padding: 3em 5em 5em 5em;
+  max-width: 100%;
+  h1 {
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+  }
+  .projectCardWrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+`;
+
+const ProjectWrapper = styled.div`
+    width: 25em;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: 2em;
+    padding: 2rem;
+    background-color: rgba(255, 255, 255, 0.25);
+	transition: box-shadow 0.2s ease;
+    p {
+        margin: auto;
+    }
+
+    img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+    .buttonCluster {
+        display: flex;
+        justify-content: center;
+        padding-top: 1em;
+    }
+    .buttonCluster button {
+        margin: 0 .5em 0 .5em;
+    }
+`;
+
+
 const Project = (props) => {
     const [hidden, setHidden] = useState(true)
     
@@ -64,25 +104,31 @@ const Project = (props) => {
     }
 console.log(projectData.projectname, projectData.author, projectData.projectimage, projectData.description, projectData.fundedamt )
     return (
-        <div>
-            <h1> We are in Project.js</h1>
-            <h2>Project Name: {projectData.projectname}</h2>
-            <h3>Project Author: {projectData.author}</h3>
-            <h4>Project Funding Goal: {projectData.fundedamt}</h4>
-            <h4>Project Description: {projectData.description}</h4>
-            <button 
-            onClick={()=> history.push(`/update-project/${projectData.projectid}`) && onShowEdit()}>Edit</button> 
-            {/* <button onClick={setVisible(!visible)}>Edit</button> */}
-            <button onClick={handleDeleteProject}>Delete</button>
-            {/* Notes: 
-                Option 2: How to conditionaly render that component  */}
-
+        <ProjectPage>
+            <h1 className="major">Your Project</h1>
+            <div className='projectCardWrapper'>
+                <ProjectWrapper>
+                    <div>
+                        <p>Name: {projectData.projectname}</p>
+                        <p>Author: {projectData.author}</p>
+                        <p>Description: {projectData.description}</p>
+                        <p>Funding Goal: {projectData.fundedamt}</p>
+                    </div>
+                    <div className = 'buttonCluster'>
+                    <button onClick={()=> history.push(`/update-project/${projectData.projectid}`) && onShowEdit()}>Edit</button>
+                        {/* <button onClick={setVisible(!visible)}>Edit</button> */}
+                        <button onClick={handleDeleteProject}>Delete</button>
+                    </div>
+                    {/* Notes: 
+                        Option 1: Pass below props to </UpdateProject> without rendering component
+                        Option 2: How to conditionaly render that component  */}
+                </ProjectWrapper>
                 <div className='hidden'>
-                {hidden ? null : <UpdateProject name={projectData.projectname} author={projectData.author} 
-                image={projectData.projectimage} description={projectData.description} amount={projectData.fundedamt}/>}
+                    {hidden ? null : <UpdateProject name={projectData.projectname} author={projectData.author} 
+                    image={projectData.projectimage} description={projectData.description} amount={projectData.fundedamt}/>}
                 </div>
-           
-        </div>
+            </div>
+        </ProjectPage>
     )
 }
 
