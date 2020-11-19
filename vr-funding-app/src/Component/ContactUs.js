@@ -161,7 +161,7 @@ const ContactUs = () => {
                     placeholder='Please tell us your message'
                     onChange={handleChange}
                 />
-                <button className='sendButton' disabled={initialDisabled} onClick={()=> history.push('/contact-confirmation')}>Send</button>
+                <button className='sendButton' onClick={()=> history.push('/contact-confirmation')}>Send</button>
             </ContactCard>
         </ContactUsPage>
     )
