@@ -93,7 +93,6 @@ const NavBar = () => {
                 <nav>
                     <ul>
                         <li> <a href="https://vigilant-bose-dd99fc.netlify.app/"> Home</a> </li> 
-                        <li><Link to='/about'>About Us</Link></li> {/* add link to marketing about us page */}
                         <li><Link to='/meet-the-team'>Meet The Team</Link></li> 
                         <li><Link to='/dashboard'>Dashboard</Link></li>
                         <li> <Link to='/sign-in' onClick={() => {window.localStorage.clear();}}> Logout </Link> </li> {/* possiblly have to style */}
