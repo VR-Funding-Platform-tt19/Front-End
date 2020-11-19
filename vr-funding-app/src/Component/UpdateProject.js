@@ -7,6 +7,7 @@ import styled from 'styled-components'
 const UpdateProjectPage = styled.div`
   padding: 3em 5em 5em 5em;
   max-width: 100%;
+  height: 85vh;
   h1 {
     text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
   }
