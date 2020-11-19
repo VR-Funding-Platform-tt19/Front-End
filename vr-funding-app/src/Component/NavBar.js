@@ -92,9 +92,9 @@ const NavBar = () => {
 
     return (
         <NavBarStyle>
-            <a href="https://vigilant-bose-dd99fc.netlify.app/" class="title"> {/* Add link to marketing page index.html */}
+            <Link to='https://vigilant-bose-dd99fc.netlify.app/' class="title"> 
                 SIXR VR Funding
-            </a>
+            </Link>
                 <nav>
                     <ul>
                         <li><Link to='https://vigilant-bose-dd99fc.netlify.app/'>Home</Link></li> 
