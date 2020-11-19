@@ -16,6 +16,8 @@ import SignUp from './Component/SignUp'
 import UpdateProject from './Component/UpdateProject'
 import ProjectForm from './Component/ProjectForm'
 import MeetTheTeam from './Component/MeetTheTeam'
+import NavBar from './Component/NavBar'
+import Footer from './Component/Footer'
 
 function App() {
 
@@ -24,8 +26,8 @@ function App() {
   // Will need to add routing here
   return (
     <div className="App">
-     
-     
+     <NavBar/>
+
       <Switch>
         {/* These are the main routes */}
         <Route exact path='/sign-in' component={SignIn}/>
@@ -38,8 +40,10 @@ function App() {
         {/* additional routes */}
         <Route exact path='/contact' component={ContactUs}/>
         <Route excact path='/reset-password' component={ForgotPassword}/>
-        <Route exact path='/about-us' component={MeetTheTeam}/>
+        <Route exact path='/meet-the-team' component={MeetTheTeam}/>
       </Switch>
+
+      <Footer/>
     </div>
   );
 }

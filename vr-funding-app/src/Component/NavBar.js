@@ -1,9 +1,9 @@
 import React from 'react';
-import '../App.css';
+import '../app.css';
 import styled from 'styled-components';
 import { Link, useHistory } from 'react-router-dom';
 
-const NavBar = styled.div`
+const NavBarStyle = styled.div`
     display: -moz-flex;
     display: -webkit-flex;
     display: -ms-flex;
@@ -85,25 +85,26 @@ const NavBar = styled.div`
 const NavBar = () => {
     const history = useHistory();
 
-    const logout () => {
+    const logOut = () => {
         window.localStorage.clear();
-        history.push('/login');
+        history.push('/sign-in');
     }
 
     return (
-        <NavBar>
-            <a href="index.html" class="title">
+        <NavBarStyle>
+            <a href="index.html" class="title"> {/* Add link to marketing page index.html */}
                 SIXR VR Funding
             </a>
                 <nav>
                     <ul>
-                        <li><Link to='/'>Home</Link></li>
-                        <li><Link to='/about'>About Us</Link></li>
-                        <li><Link to='/team'>Meet The Team</Link></li>
+                        <li><Link to='/'>Home</Link></li> {/* Add link to marketing page index.html */}
+                        <li><Link to='/about'>About Us</Link></li> {/* add link to marketing about us page */}
+                        <li><Link to='/meet-the-team'>Meet The Team</Link></li> 
                         <li><Link to='/dashboard'>Dashboard</Link></li>
+                        <li> <button onClick={() => logOut}> Logout </button> </li> {/* possiblly have to style */}
                     </ul>
                 </nav>
-        </NavBar>
+        </NavBarStyle>
         
     )
 }

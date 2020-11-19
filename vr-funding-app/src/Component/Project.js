@@ -62,7 +62,7 @@ const Project = (props) => {
                     console.log(error)
                 })
     }
-
+console.log(projectData.projectname, projectData.author, projectData.projectimage, projectData.description, projectData.fundedamt )
     return (
         <div>
             <h1> We are in Project.js</h1>

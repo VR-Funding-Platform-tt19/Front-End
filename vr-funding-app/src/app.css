@@ -57,18 +57,6 @@ mark {
 	color: inherit;
 }
 
-input::-moz-focus-inner {
-	border: 0;
-	padding: 0;
-}
-
-input, select, textarea {
-	-moz-appearance: none;
-	-webkit-appearance: none;
-	-ms-appearance: none;
-	appearance: none;
-}
-
 /* Basic */
 
 	@-ms-viewport {
@@ -112,7 +100,7 @@ input, select, textarea {
 
 /* Type */
 
-	body, select, textarea {
+	body, select {
 		color: rgba(255, 255, 255, 0.55);
 		font-family: Arial, Helvetica, sans-serif;
 		font-size: 16.5pt;
@@ -122,7 +110,7 @@ input, select, textarea {
 
 		@media screen and (max-width: 1680px) {
 
-			body, select, textarea {
+			body, select {
 				font-size: 13pt;
 			}
 
@@ -130,7 +118,7 @@ input, select, textarea {
 
 		@media screen and (max-width: 1280px) {
 
-			body, select, textarea {
+			body, select {
 				font-size: 12pt;
 			}
 
@@ -138,7 +126,7 @@ input, select, textarea {
 
 		@media screen and (max-width: 360px) {
 
-			body, select, textarea {
+			body, select {
 				font-size: 11pt;
 			}
 
@@ -324,3 +312,52 @@ input, select, textarea {
 	.align-right {
 		text-align: right;
 	}
+
+/* Fancy Button */
+
+/* button {
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	-ms-appearance: none;
+	appearance: none;
+	-moz-transition: border-color 0.2s ease;
+	-webkit-transition: border-color 0.2s ease;
+	-ms-transition: border-color 0.2s ease;
+	transition: border-color 0.2s ease;
+	background-color: transparent;
+	border: solid 1px !important;
+	border-color: rgba(255, 255, 255, 0.15) !important;
+	border-radius: 3em;
+	color: #ffffff !important;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 0.6em;
+	font-weight: bold;
+	height: calc(4.75em + 2px);
+	letter-spacing: 0.25em;
+	line-height: 4.75em;
+	outline: 0;
+	padding: 0 3.75em;
+	position: relative;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	white-space: nowrap;
+}
+button:hover {
+	border-color: rgba(255, 255, 255, 0.55) !important;
+}
+button:hover:after {
+	opacity: 0.05;
+	-moz-transform: scale(1);
+	-webkit-transform: scale(1);
+	-ms-transform: scale(1);
+	transform: scale(1);
+}
+button:hover:active {
+	border-color: #ffffff !important;
+}
+
+button:hover:active:after {
+	opacity: 0.1;
+} */

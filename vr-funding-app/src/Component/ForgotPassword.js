@@ -12,54 +12,49 @@ import * as yup from 'yup'
 
 // --------------- Basic Styling -------------------
 const ForgotPswCard = styled.div`
-    background-color: mistyrose;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border: 2px solid black;
-    z-index: 10;
-    padding: 1%;
-    width: 22%;
-    position: absolute;
-    box-shadow: 5px 5px 5px 5px darkgray;
-    
-    input{
-        background: transparent;
-        border: none;
-        border-bottom: 1px solid red;
-        outline: none;
-    }
-    button {
-        margin-top: 3%;
-        width: 35%;
-        align-self: center;
-    }
+    margin: auto;
+    padding: 4em 1em 0 0;
+    max-width: 100%;
     .hide {
         display:none
     }
     .show{
-        display:flex;
-    }
-    .closeButton{
-        align-self: flex-end;
-        color: black;
-        border-radius: 50%;
-        
-        background-color: white;
-        position: relative;
-        width:23px;
-        height: 23px;
-        border: 2px solid white;
+        display: inline;
     }
 `
 const ForgotPswInput = styled.div`
-    display:flex;
+    display: flex;
     flex-direction: column;
+    justify-content: space-around;
+    input {
+        float: right;
+        margin-top: 1em;
+        display: block;
+    }
+    button {
+        float: right;
+        margin-top: 1em;
+    }
+
 `
 
 const EmailSent = styled.div`
-    display:flex;
-    flex-direction: column;
+    margin: auto;
+    padding: 4em 1em 0 0;
+    max-width: 100%;
+    p {
+        text-align: right;
+        display: block;
+        margin-bottom: 0;
+    }
+    a {
+        text-align: right;
+        display: block;
+        width: auto;
+        text-decoration: underline;
+        text-decoration-style: dotted;
+        border-bottom-style: none;
+    }
 `
 //--------------- initial state values --------------
 const initialEmailFormvalue = {email: ''}
@@ -83,30 +78,26 @@ const ForgotPassword = (props) => {
     }
 
     return (
-        <div>
-            <ForgotPswCard>
-               <ForgotPswInput className={visible}>
-                    <p> Enter email to retrieve account </p>
-                    <input
-                        name = 'email'
-                        type = 'email'
-                        value = {emailForm.email}
-                        onChange = {onChange}
-                    />
-                    <button onClick={()=> {
-                         setVisible('hide');
-                         setVisible2('show');
-                        }}>submit</button>
-                </ForgotPswInput> 
-
-                <EmailSent className={visible2}>
-                    <CloseIcon onClick={()=> {hideForgotPsw(false)}}className='closeButton'/>
-                    <p>Thank you! Please check your email.</p>
-                    <Link>resend email </Link>
-                 </EmailSent>
-               
-            </ForgotPswCard>        
-        </div>
+        <ForgotPswCard>
+            <ForgotPswInput className={visible}>
+                <label> Enter email to retrieve account:</label>
+                <button onClick={()=> {
+                    setVisible('hide');
+                    setVisible2('show');
+                }}>submit</button>
+                <input
+                    name = 'email'
+                    type = 'email'
+                    value = {emailForm.email}
+                    onChange = {onChange}
+                />
+            </ForgotPswInput> 
+            <EmailSent className={visible2}>
+                {/* <CloseIcon onClick={()=> {hideForgotPsw(false)}}className='closeButton'/> */}
+                <p>Thank you! Please check your email.</p>
+                <Link>Resend Email</Link>
+            </EmailSent>
+        </ForgotPswCard>
     )
 }
 
