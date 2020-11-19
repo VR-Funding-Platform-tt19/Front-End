@@ -6,6 +6,7 @@ import styled from 'styled-components';
 
 const ProjectCardItem = styled.div`
     width: 25em;
+    height:80vh;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     margin: 2em;
     padding: 2rem;
