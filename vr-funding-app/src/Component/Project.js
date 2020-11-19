@@ -15,7 +15,8 @@ import UpdateProject from './UpdateProject'
 const ProjectPage = styled.div`
   padding: 3em 5em 5em 5em;
   max-width: 100%;
-  height: 85vh;
+  height: 82vh;
+  overflow: hidden;
   h1 {
     text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
   }
