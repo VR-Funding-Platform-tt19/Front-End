@@ -170,6 +170,7 @@ const SignIn = (props) => {
                 </div>
                 {visible ? <ForgotPassword hideForgotPass={setVisible}/> : null}
             </FormWrapper>
+            <img src='https://images.unsplash.com/photo-1593508512255-86ab42a8e620?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'/>
         </SignInPage>
     )
 }
