@@ -20,7 +20,14 @@ const SignInPage = styled.div`
   h1 {
     text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
   }
-`;
+
+  img{
+      border-radius: 20px;
+      height: 50%;
+      width: 50%;
+      margin-top: 15%;
+  }
+`
 
 const FormWrapper = styled.form`
   .inputField {
