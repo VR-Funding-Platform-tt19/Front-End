@@ -16,7 +16,7 @@ import { signInFormSchema } from './FormSchemas/signInFormSchema';
 const SignInPage = styled.div`
   padding: 3em 5em 5em 5em;
   max-width: 100%;
-  height:80vh;
+  height:82vh;
   h1 {
     text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
   }
@@ -121,7 +121,7 @@ const SignIn = (props) => {
                 history.push('/dashboard')
             })
             .catch((error)=>{
-                alert('Incorrect Username or Password')
+                alert('Username or Password is incorrect')
                 console.log(error)
             })
     }

@@ -25,7 +25,8 @@ import ProjectCard from '../Component/ProjectCard'
 const DashboardPage = styled.div`
     padding: 3em 5em 5em 5em;
     max-width: 100%;
-    height:80vh;
+    max-height: 100%;
+    /* min-height: 100%; */
     h1 {
     text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
     }
