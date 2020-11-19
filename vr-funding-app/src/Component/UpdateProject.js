@@ -1,7 +1,48 @@
 import React, {useState, useEffect} from 'react'
 import {useHistory, useParams} from 'react-router-dom'
 import {axiosWithAuth} from '../Utils/axiosWithAuth'
+import styled from 'styled-components'
 
+// ----- Form Styling ------
+const UpdateProjectPage = styled.div`
+  padding: 3em 5em 5em 5em;
+  max-width: 100%;
+  h1 {
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+  }
+  .projectCardWrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+`;
+
+const UpdateProjectCard = styled.form`
+    width: 25em;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: 2em;
+    padding: 2rem;
+    background-color: rgba(255, 255, 255, 0.25);
+	transition: box-shadow 0.2s ease;
+
+    .inputForm input {
+        width: 100%;
+    }
+    .inputForm label {
+        float: left;
+        margin-right: .5em;       
+    }
+    .inputForm span {
+        display: block;
+        overflow: hidden;
+    }
+    .finishEdit {
+        display: flex;
+        justify-content: center;
+        padding-top: 1em;
+    }
+`;
 
 //SETTING INITIAL VALUES
 
@@ -79,43 +120,61 @@ const UpdateProject = (props) => {
         
     }
     return(
-        <div>
-            <form onSubmit={handleSubmit}>
-                <h2 className='form-title'>Edit Project</h2>
-                <label>Project Name: {' '}</label>
-                <input
-                name='projectname'
-                type='text'
-                value={projectValues.projectname}
-                onChange={handleChange}
-                />
+        <UpdateProjectPage>
+            <h1 className="major">Edit Project</h1>
+            <div className='projectCardWrapper'>
+                <UpdateProjectCard onSubmit={handleSubmit}>
+                <div className='inputForm'>
+                        <label>Name:</label>
+                        <span>
+                            <input
+                                name='projectname'
+                                type='text'
+                                value={projectValues.projectname}
+                                onChange={handleChange}
+                            />
+                        </span>
+                    </div>
+                    <div className='inputForm'>
+                        <label>Author:</label>
+                        <span>
+                            <input
+                                name='author'
+                                type='text'
+                                value={projectValues.author}
+                                onChange={handleChange}
+                            />
+                        </span>
+                    </div>
+                    <div className='inputForm'>
+                    <label>Description: </label>
+                        <span>
+                            <input
+                                name='description'
+                                type='text'
+                                value={projectValues.description}
+                                onChange={handleChange}
+                            />
+                        </span>
+                    </div>
+                    <div className='inputForm'>
+                        <label>Funding Goal: </label>
+                        <span>
+                            <input
+                                name='fundedamt'
+                                type='number'
+                                value={projectValues.fundedamt}
+                                onChange={handleChange}
+                            />
+                        </span>
+                    </div>
+                    <div className='finishEdit'>
+                        <button>Finish Editing</button>
+                    </div>
+                </UpdateProjectCard>
+            </div>
 
-                <label>Project Author: {' '}</label>
-                <input
-                name='author'
-                type='text'
-                value={projectValues.author}
-                onChange={handleChange}
-                />
-
-                <label>Project Description: {' '}</label>
-                <input
-                name='description'
-                type='text'
-                value={projectValues.description}
-                onChange={handleChange}
-                />
-
-                <label>Funding Goal: {' '}</label>
-                <input
-                name='fundedamt'
-                type='number'
-                value={projectValues.fundedamt}
-                onChange={handleChange}
-                />
-                <button>Finish Editing</button>
-            </form>
-        </div> 
+        </UpdateProjectPage> 
     )
 }
     
