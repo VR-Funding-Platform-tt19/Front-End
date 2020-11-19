@@ -18,6 +18,7 @@ import ProjectForm from './Component/ProjectForm'
 import MeetTheTeam from './Component/MeetTheTeam'
 import NavBar from './Component/NavBar'
 import Footer from './Component/Footer'
+import ContactUsEmailSent from './Component/ContactUsEmailSent'
 
 function App() {
 
@@ -38,9 +39,10 @@ function App() {
         <Route exact path='/project-form' component={ProjectForm}/>
 
         {/* additional routes */}
-        <Route exact path='/contact' component={ContactUs}/>
+        <Route exact path='/contact-us' component={ContactUs}/>
         <Route excact path='/reset-password' component={ForgotPassword}/>
         <Route exact path='/meet-the-team' component={MeetTheTeam}/>
+        <Route exact path='/contact-confirmation' component={ContactUsEmailSent}/>
       </Switch>
 
       <Footer/>
