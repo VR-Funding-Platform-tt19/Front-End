@@ -109,6 +109,7 @@ const SignUp = () => {
                     history.push('/sign-in')
                 })
                 .catch(error => {
+                    alert('Incorrect values')
                     console.log('There is an error', error);
                 });
 

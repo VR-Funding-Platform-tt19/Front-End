@@ -121,6 +121,7 @@ const SignIn = (props) => {
                 history.push('/dashboard')
             })
             .catch((error)=>{
+                alert('Incorrect Username or Password')
                 console.log(error)
             })
     }
