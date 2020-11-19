@@ -2,14 +2,6 @@ import React, {useState, useEffect} from 'react'
 import {useHistory, useParams} from 'react-router-dom'
 import {axiosWithAuth} from '../Utils/axiosWithAuth'
 
-///PROJECT QUESTIONS/////
-
-/// 1.Do we still need to save the username and id for functional purposes?
-/// 2.Axios with auth for the useEffect calls or just straight axios?
-
-
-
-
 
 //SETTING INITIAL VALUES
 
@@ -25,6 +17,7 @@ const UpdateProject = (props) => {
     // const { name, image, author, description, amount} = props
     //SETTING INITIAL FORM STATE
     const [projectValues, setProjectValues] = useState(initialProjectValues)
+
     
     
     const {id} = useParams()
@@ -68,8 +61,7 @@ const UpdateProject = (props) => {
         })
 
     }
-    console.log(id)
-    // put endpoint not working
+    
     const handleSubmit = (event) =>{
         console.log(projectValues)
         console.log('FUNDED AMOUNT------->',projectValues.fundedamt)
