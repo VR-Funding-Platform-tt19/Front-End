@@ -21,6 +21,8 @@ import * as yup from 'yup'
 const ProjectPage = styled.div`
   padding: 3em 5em 5em 5em;
   max-width: 100%;
+  height: 79vh;
+  overflow: hidden;
   h1 {
     text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
   }
@@ -48,11 +50,11 @@ const ProjectFormCard= styled.form`
 
 const initialState = 
     {
-        projectname: "pedrotest",
-        description: "test1",
-        author: "test",
-        projectimage: "test",
-        fundedamt: 5
+        projectname: "",
+        description: "",
+        author: "",
+        projectimage: "",
+        fundedamt: 0
     }
 
 

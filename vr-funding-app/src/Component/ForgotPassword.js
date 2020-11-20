@@ -93,7 +93,6 @@ const ForgotPassword = (props) => {
                 />
             </ForgotPswInput> 
             <EmailSent className={visible2}>
-                {/* <CloseIcon onClick={()=> {hideForgotPsw(false)}}className='closeButton'/> */}
                 <p>Thank you! Please check your email.</p>
                 <Link>Resend Email</Link>
             </EmailSent>

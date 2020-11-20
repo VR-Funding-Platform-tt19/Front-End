@@ -14,6 +14,8 @@ import { contactUsSchema } from './FormSchemas/contactUsSchema'
 const ContactUsPage = styled.div`
     padding: 3em 5em 5em 5em;
     max-width: 100%;
+    height: 80vh;
+    overflow: hidden;
     h1 {
         text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
     }
@@ -161,7 +163,7 @@ const ContactUs = () => {
                     placeholder='Please tell us your message'
                     onChange={handleChange}
                 />
-                <button className='sendButton' disabled={initialDisabled} onClick={()=> history.push('/contact-confirmation')}>Send</button>
+                <button className='sendButton' disabled={disabled} onClick={()=> history.push('/contact-confirmation')}>Send</button>
             </ContactCard>
         </ContactUsPage>
     )
