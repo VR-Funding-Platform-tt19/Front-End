@@ -20,7 +20,14 @@ const SignInPage = styled.div`
   h1 {
     text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
   }
-`;
+
+  img{
+      border-radius: 20px;
+      height: 50%;
+      width: 50%;
+      margin-top: 15%;
+  }
+`
 
 const FormWrapper = styled.form`
   .inputField {
@@ -171,6 +178,7 @@ const SignIn = (props) => {
                 
                 {visible ? <ForgotPassword hideForgotPass={setVisible}/> : null}
             </FormWrapper>
+            <img src='https://images.unsplash.com/photo-1593508512255-86ab42a8e620?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60' alt='VR'/>
         </SignInPage>
     )
 }

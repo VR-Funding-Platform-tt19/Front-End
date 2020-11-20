@@ -17,6 +17,13 @@ const SignUpPage = styled.div`
   h1 {
     text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
   }
+
+  img{
+      border-radius: 20px;
+      height: 50%;
+      width: 50%;
+      margin-top: 15%;
+  }
 `
 
 const FormWrapper = styled.form`
@@ -172,6 +179,7 @@ const SignUp = () => {
                 <button className='signInButton' disabled={disabled}>Sign Up</button>
             </div>
         </FormWrapper>
+        <img src='https://images.unsplash.com/photo-1525540810550-5032f5d191b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60' alt='VR'/>
     </SignUpPage>
     )
 }

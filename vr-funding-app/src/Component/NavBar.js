@@ -1,7 +1,7 @@
 import React from 'react';
 import '../app.css';
 import styled from 'styled-components';
-import { Link, useHistory } from 'react-router-dom';
+import { Link,} from 'react-router-dom';
 
 const NavBarStyle = styled.div`
     display: -moz-flex;
@@ -83,7 +83,6 @@ const NavBarStyle = styled.div`
 `;
 
 const NavBar = () => {
-    const history = useHistory();
 
     return (
         <NavBarStyle>
@@ -92,8 +91,7 @@ const NavBar = () => {
             </a>
                 <nav>
                     <ul>
-                    <li> <a href="https://vigilant-bose-dd99fc.netlify.app/"> Home</a> </li>  {/* Add link to marketing page index.html */}
-                        <li><Link to='/about'>About Us</Link></li> {/* add link to marketing about us page */}
+                        <li> <a href="https://vigilant-bose-dd99fc.netlify.app/"> Home</a> </li> 
                         <li><Link to='/meet-the-team'>Meet The Team</Link></li> 
                         <li><Link to='/dashboard'>Dashboard</Link></li>
                         <li> <Link to='/sign-in' onClick={() => {window.localStorage.clear();}}> Logout </Link> </li> {/* possiblly have to style */}
