@@ -315,7 +315,7 @@ mark {
 
 /* Fancy Button */
 
-/* button {
+button {
 	-moz-appearance: none;
 	-webkit-appearance: none;
 	-ms-appearance: none;
@@ -360,4 +360,9 @@ button:hover:active {
 
 button:hover:active:after {
 	opacity: 0.1;
-} */
+}
+
+button:disabled {
+	color: #696969 !important;
+	border-color: rgba(105, 105, 105, 0.55) !important;
+}
