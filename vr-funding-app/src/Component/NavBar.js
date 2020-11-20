@@ -1,7 +1,7 @@
 import React from 'react';
 import '../app.css';
 import styled from 'styled-components';
-import { Link, useHistory } from 'react-router-dom';
+import { Link,} from 'react-router-dom';
 
 const NavBarStyle = styled.div`
     display: -moz-flex;
@@ -89,7 +89,6 @@ const NavBarStyle = styled.div`
 `;
 
 const NavBar = () => {
-    const history = useHistory();
 
     return (
         <NavBarStyle>
