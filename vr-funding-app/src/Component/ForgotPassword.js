@@ -26,14 +26,13 @@ const ForgotPswInput = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    input {
-        float: right;
-        margin-top: 1em;
-        display: block;
+    .inputField {
+        text-align:right;
+        margin: .5em 0 1em 0;
     }
-    button {
-        float: right;
-        margin-top: 1em;
+    input {
+        height: 28px;
+        width: 200px;
     }
 
 `
@@ -81,16 +80,21 @@ const ForgotPassword = (props) => {
         <ForgotPswCard>
             <ForgotPswInput className={visible}>
                 <label> Enter email to retrieve account:</label>
-                <button onClick={()=> {
-                    setVisible('hide');
-                    setVisible2('show');
-                }}>submit</button>
+                <div className='inputField'>
                 <input
-                    name = 'email'
-                    type = 'email'
-                    value = {emailForm.email}
-                    onChange = {onChange}
-                />
+                        name = 'email'
+                        type = 'email'
+                        value = {emailForm.email}
+                        onChange = {onChange}
+                        placeholder='Enter your username'
+                    />
+                </div>
+                <div className='inputField'>
+                    <button onClick={()=> {
+                            setVisible('hide');
+                            setVisible2('show');
+                        }}>submit</button>
+                </div>
             </ForgotPswInput> 
             <EmailSent className={visible2}>
                 <p>Thank you! Please check your email.</p>
